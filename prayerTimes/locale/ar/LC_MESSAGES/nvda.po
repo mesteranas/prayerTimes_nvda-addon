@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-02-29 17:54+0200\n"
-"PO-Revision-Date: 2024-02-29 17:59+0200\n"
+"POT-Creation-Date: 2024-03-02 13:48+0200\n"
+"PO-Revision-Date: 2024-03-02 13:51+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -16,31 +16,59 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.3.2\n"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:251
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:272
-msgid "prayer times"
-msgstr "مواقيت الصلاة"
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Asr"
+msgstr "العصر"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:254
-msgid "select country"
-msgstr "إختر دولة"
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Dhuhr"
+msgstr "الظهر"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:256
-msgid "type your city"
-msgstr "أكتب مدينتك"
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Fajr"
+msgstr "الفجر"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:275
-msgid "loading"
-msgstr "جاري التحميل"
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Isha"
+msgstr "العشاء"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:280
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Maghrib"
+msgstr "المغرب"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:271
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:274
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:309
 msgid " at"
 msgstr "في"
 
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:282
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:278
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:311
 msgid "error"
 msgstr "خطأ"
 
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:280
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:301
+msgid "prayer times"
+msgstr "مواقيت الصلاة"
+
 #: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:283
+msgid "select country"
+msgstr "إختر دولة"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:285
+msgid "type your city"
+msgstr "أكتب مدينتك"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:304
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:315
+msgid "loading"
+msgstr "جاري التحميل"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:312
 msgid "say prayer times"
 msgstr "نطق مواقيت الصلة"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:317
+msgid "say next prayer time"
+msgstr "نطق الصلاة التالية"

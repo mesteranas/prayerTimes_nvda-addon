@@ -1,3 +1,5 @@
+import datetime
+import threading
 import api
 from . import aladhan
 from gui import SettingsPanel, NVDASettingsDialog,guiHelper
@@ -247,6 +249,33 @@ confspec = {
 "city": "string(default=cairo)"}
 
 config.conf.spec[roleSECTION] = confspec
+prayersDect={"Fajr":_("Fajr"),"Dhuhr":_("Dhuhr"),"Asr":_("Asr"),"Maghrib":_("Maghrib"),"Isha":_("Isha")}
+def change(key):
+	try:
+		return prayersDect[key]
+	except:
+		return key
+def getNextPrayer():
+	try:
+		client=aladhan.Client(aladhan.City(config.conf[roleSECTION]["city"],config.conf[roleSECTION]["country"]))
+		adhans = client.get_today_times()
+		for adhan in adhans:
+			time=str(datetime.datetime.strptime(str(adhan.readable_timing(show_date=False)),"%I:%M (%p)").strftime("%H : %M")).split(" : ")
+			now=str(datetime.datetime.now().strftime("%H:%M:%p")).split(":")
+			hour=int(time[0])
+			NowHour=int(now[0])
+			minute=int(time[1])
+			nowMinute=int(now[1])
+
+			if hour > NowHour:
+				return change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False)
+			if hour==NowHour:
+				if minute>=nowMinute:
+					return change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False)
+				else:
+					continue
+	except:
+		return _("error")
 class CRSettingsPanel(SettingsPanel):
 	title = _("prayer times")
 	def makeSettings(self, settingsSizer):
@@ -277,9 +306,14 @@ class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 			client=aladhan.Client(aladhan.City(config.conf[roleSECTION]["city"],config.conf[roleSECTION]["country"]))
 			adhans = client.get_today_times()
 			for adhan in adhans:
-				ui.message(adhan.get_en_name() + _(" at") +  adhan.readable_timing(show_date=False))
+				ui.message(change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False))
 		except Exception as e:
 			ui.message(_("error"))
 	script_toggle.__doc__= _("say prayer times")
+	@script(gesture="kb:NVDA+shift+p")
+	def script_toggle1(self,gesture):
+		ui.message(_("loading"))
+		ui.message(getNextPrayer())
+	script_toggle1.__doc__= _("say next prayer time")
 	def terminate(self):
 		NVDASettingsDialog.categoryClasses.remove(CRSettingsPanel)
