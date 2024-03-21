@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Namaz Zamanı\n"
+"POT-Creation-Date: 2024-03-02 13:48+0200\n"
+"PO-Revision-Date: 2024-03-07 17:30+0300\n"
+"Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language-Team: Umut KORKMAZ <umutkork@gmail.com>\n"
+"Language: tr_TR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Asr"
+msgstr "İkindi"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Dhuhr"
+msgstr "Öğle"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Fajr"
+msgstr "Sabah"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Isha"
+msgstr "Yatsı"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
+msgid "Maghrib"
+msgstr "Akşam"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:271
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:274
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:309
+msgid " at"
+msgstr " saat"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:278
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:311
+msgid "error"
+msgstr "hata"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:280
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:301
+msgid "prayer times"
+msgstr "namaz vakitleri"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:283
+msgid "select country"
+msgstr "ülke seçin"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:285
+msgid "type your city"
+msgstr "bir şehir adı yazın"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:304
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:315
+msgid "loading"
+msgstr "Yükleniyor"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:312
+msgid "say prayer times"
+msgstr "namaz vaktini söyler"
+
+#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:317
+msgid "say next prayer time"
+msgstr "sonraki namaz vaktini söyler"
