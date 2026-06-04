@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gebetszeiten - NVDA-Erweiterung</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        blockquote {
+            background: #f9f9f9;
+            border-left: 10px solid #ccc;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gebetszeiten</h1>
+    <p>Eine Erweiterung für den NVDA-Bildschirmleser, mit der Sie schnell die aktuellen Gebetszeiten für Muslime an jedem Ort der Erde abrufen können.</p>
+    
+    <h2>Installation</h2>
+    <p>Sie können diese Erweiterung direkt aus dem NVDA Add-on Store installieren oder von der <a href="https://github.com/mesteranas/prayerTimes_nvda-addon/releases">Releases-Seite herunterladen</a>.</p>
+    
+    <h2>Verwendung</h2>
+    <p>Standardmäßig erkennt die Erweiterung Ihren Standort automatisch anhand Ihrer IP-Adresse. Bitte beachten Sie, dass diese Methode in einigen Fällen ungenau sein kann.</p>
+    <p>Um eine höhere Genauigkeit zu erreichen, können Sie die automatische Erkennung in den Einstellungen deaktivieren und Ihren aktuellen Breitengrad (Latitude) und Längengrad (Longitude) manuell eingeben. Sie können diese präzisen Koordinaten ganz einfach mithilfe einer GPS-basierten Standort-App auf Ihrem Mobiltelefon ermitteln.</p>
+    
+    <h3>Hauptfunktionen &amp; Tastenkombinationen</h3>
+    <ul>
+        <li><strong>Gebetszeiten anzeigen:</strong> Drücken Sie <strong>NVDA+ALT+P</strong>, um die heutigen Gebetszeiten in einem gut lesbaren Textfeld anzuzeigen.</li>
+        <li><strong>Nächstes Gebet anzeigen:</strong> Drücken Sie <strong>NVDA+Umschalt+P</strong>, um die Zeit des bevorstehenden Gebets zu überprüfen.</li>
+    </ul>
+    
+    <blockquote>
+        <p><strong>Hinweis:</strong> Alle diese Tastenkombinationen können über den NVDA-Dialog „Eingaben“ angepasst werden.</p>
+    </blockquote>
+    
+    <h3>Zwischenspeicherung (Caching)</h3>
+    <p>Um sofortige Ergebnisse zu liefern, speichert die Erweiterung die Gebetszeiten beim ersten Drücken einer Tastenkombination während einer NVDA-Sitzung zwischen. Dieser Zwischenspeicher wird automatisch gelöscht, wenn Sie NVDA neu starten oder im Einstellungsdialog auf die Schaltfläche <strong>OK</strong> klicken.</p>
+    
+    <hr>
+    
+    <h2>Unterstützte Sprachen</h2>
+    <p>Die Erweiterung unterstützt derzeit die folgenden Sprachen:</p>
+    <ul>
+        <li>Arabisch</li>
+        <li>Englisch</li>
+        <li>Deutsch</li>
+        <li>Türkisch</li>
+    </ul>
+    <p><em>Hinweis: Der Entwickler pflegt die arabischen, englischen und deutschen Übersetzungen aktiv.</em></p>
+    
+    <h3>Beiträge zur Lokalisierung</h3>
+    <p>Wenn Sie die Erweiterung in eine andere Sprache übersetzen möchten, reichen Sie bitte einen Pull-Request ein. Ein vollständiger Beitrag zur Übersetzung sollte Folgendes beinhalten:</p>
+    <ul>
+        <li>Alle lokalisierten Oberflächentexte (<code>.po</code>-Dateien).</li>
+        <li>Eine übersetzte Version dieser Dokumentation.</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>Beiträge</h2>
+    <p>Beiträge aller Art sind herzlich willkommen! Sie können dem Projekt helfen, indem Sie Folgendes bereitstellen:</p>
+    <ul>
+        <li>Fehlerbehebungen und Fehlerberichte</li>
+        <li>Implementierung neuer Funktionen</li>
+        <li>Code-Verbesserungen und Refactoring</li>
+        <li>Aktualisierungen der Lokalisierung</li>
+        <li>Allgemeine Vorschläge und Feedback</li>
+    </ul>
+    
+    <h2>Lizenz</h2>
+    <p>Diese Erweiterung ist Open-Source-Software, die unter der <strong>GNU General Public License v2.0 (GPL-2.0)</strong> lizenziert ist.</p>
+</body>
+</html>

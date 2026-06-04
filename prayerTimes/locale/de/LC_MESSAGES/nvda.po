@@ -6,10 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2026-06-04 13:42+0300\n"
-"PO-Revision-Date: 2026-06-04 13:46+0300\n"
+"PO-Revision-Date: 2026-06-04 13:50+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: ar\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,88 +20,76 @@ msgstr ""
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:26
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:30
 msgid "Sunrise"
-msgstr "شروق الشمس"
+msgstr "Sonnenaufgang"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:57
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:95
 msgid "prayer times"
-msgstr "مواقيت الصلاة"
+msgstr "Gebetszeiten"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:60
 msgid "Detect location automatically. Not accurate in all cases"
-msgstr "تحديد الموقع تلقائيا. ليست دقيقة في جميع الحالات"
+msgstr "Standort automatisch erkennen. Nicht in allen Fällen genau"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:63
 msgid "Latitude"
-msgstr "دائر العرض"
+msgstr "Breitengrad"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:67
 msgid "Longitude"
-msgstr "خط الطول"
+msgstr "Längengrad"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:111
 msgid "error"
-msgstr "خطأ"
+msgstr "Fehler"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:116
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:121
 msgid "loading"
-msgstr "جاري التحميل"
+msgstr "Wird geladen"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:117
 msgid "Result"
-msgstr "نتيجة"
+msgstr "Ergebnis"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:118
 msgid "Get current prayer times"
-msgstr "الحصول على أوقات الصلاة الحالية"
+msgstr "Aktuelle Gebetszeiten abrufen"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:123
 msgid "Get next prayer time"
-msgstr "الحصول على وقت الصلاة القادمة"
+msgstr "Nächste Gebetszeit abrufen"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:29
 msgid "Fajr"
-msgstr "الفجر"
+msgstr "Fajr"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:31
 msgid "Dhuhr"
-msgstr "الظهر"
+msgstr "Dhuhr"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:32
 msgid "Asr"
-msgstr "العصر"
+msgstr "Asr"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:33
 msgid "Maghrib"
-msgstr "المغرب"
+msgstr "Maghrib"
 
 #: D:\windows\folders\Github
 #: desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:34
 msgid "Isha"
-msgstr "العشاء"
-
-#~ msgid " at"
-#~ msgstr "في"
-
-#~ msgid "select country"
-#~ msgstr "إختر دولة"
-
-#~ msgid "type your city"
-#~ msgstr "أكتب مدينتك"
-
-#~ msgid "say prayer times"
-#~ msgstr "نطق مواقيت الصلة"
+msgstr "Isha"

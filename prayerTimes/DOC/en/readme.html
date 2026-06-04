@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayer Times - NVDA Add-on</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        blockquote {
+            background: #f9f9f9;
+            border-left: 10px solid #ccc;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prayer Times</h1>
+    <p>An NVDA screen reader add-on that allows you to quickly get the current prayer times for Muslims anywhere on Earth.</p>
+    
+    <h2>Installation</h2>
+    <p>You can install this add-on directly from the NVDA Add-on Store, or you can download it <a href="https://github.com/mesteranas/prayerTimes_nvda-addon/releases">from the releases page</a>.</p>
+    
+    <h2>Usage</h2>
+    <p>By default, the add-on automatically detects your location using your IP address. Please note that this method may be inaccurate in some cases.</p>
+    <p>To achieve higher accuracy, you can disable automatic detection in the settings and manually enter your current latitude and longitude. You can easily find these precise coordinates using a GPS-based location app on your mobile phone.</p>
+    
+    <h3>Key Features &amp; Shortcuts</h3>
+    <ul>
+        <li><strong>View Prayer Times:</strong> Press <strong>NVDA+ALT+P</strong> to display today's prayer times inside a readable text field.</li>
+        <li><strong>View Next Prayer:</strong> Press <strong>NVDA+Shift+P</strong> to check the upcoming prayer time.</li>
+    </ul>
+    
+    <blockquote>
+        <p><strong>Note:</strong> All of these shortcuts can be customized via the NVDA Input Gestures dialog.</p>
+    </blockquote>
+    
+    <h3>Caching</h3>
+    <p>To provide instant results, the add-on caches the prayer times upon your first shortcut press during an NVDA session. This cache is automatically cleared when you restart NVDA or when you press the <strong>OK</strong> button in the settings dialog.</p>
+    
+    <hr>
+    
+    <h2>Supported Languages</h2>
+    <p>The add-on currently supports the following languages:</p>
+    <ul>
+        <li>Arabic</li>
+        <li>English</li>
+        <li>German</li>
+        <li>Turkish</li>
+    </ul>
+    <p><em>Note: The developer actively maintains the Arabic, English, and German translations.</em></p>
+    
+    <h3>Localization Contributions</h3>
+    <p>If you would like to translate the add-on into another language, please submit a pull request. A complete translation contribution should include:</p>
+    <ul>
+        <li>All localized interface strings (<code>.po</code> files).</li>
+        <li>A translated version of this documentation.</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>Contributions</h2>
+    <p>Contributions of all kinds are highly appreciated! You can help the project by providing:</p>
+    <ul>
+        <li>Bug fixes and issue reporting</li>
+        <li>New feature implementations</li>
+        <li>Code improvements and refactoring</li>
+        <li>Localization updates</li>
+        <li>General suggestions and feedback</li>
+    </ul>
+    
+    <h2>License</h2>
+    <p>This add-on is open-source software licensed under the <strong>GNU General Public License v2.0 (GPL-2.0)</strong>.</p>
+</body>
+</html>

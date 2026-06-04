@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مواقيت الصلاة - إضافة NVDA</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        h3 {
+            margin-top: 20px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: monospace;
+            direction: ltr;
+            display: inline-block;
+        }
+        blockquote {
+            background: #f9f9f9;
+            border-right: 10px solid #ccc;
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+        }
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 40px 0;
+        }
+        ul {
+            padding-right: 20px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .shortcut {
+            direction: ltr;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>مواقيت الصلاة</h1>
+    <p>إضافة لقارئ الشاشة NVDA تتيح لك الحصول بسرعة على مواقيت الصلاة الحالية للمسلمين في أي مكان على وجه الأرض.</p>
+    
+    <h2>التثبيت</h2>
+    <p>يمكنك تثبيت هذه الإضافة مباشرة من متجر إضافات NVDA، أو يمكنك تنزيلها <a href="https://github.com/mesteranas/prayerTimes_nvda-addon/releases">من صفحة الإصدارات</a>.</p>
+    
+    <h2>الاستخدام</h2>
+    <p>بشكل افتراضي، تقوم الإضافة بتحديد موقعك تلقائيًا باستخدام عنوان IP الخاص بك. يرجى الملاحظة أن هذه الطريقة قد لا تكون دقيقة في بعض الحالات.</p>
+    <p>لتحقيق دقة أعلى، يمكنك تعطيل التحديد التلقائي من الإعدادات وإدخال خطوط الطول والعرض الحالية يدويًا. يمكنك العثور على هذه الإحداثيات الدقيقة بسهولة باستخدام تطبيق لتحديد المواقع يعتمد على الـ GPS على هاتفك المحمول.</p>
+    
+    <h3>الميزات الرئيسية والاختصارات</h3>
+    <ul>
+        <li><strong>عرض مواقيت الصلاة:</strong> اضغط على الاختصار <strong class="shortcut">NVDA+ALT+P</strong> لعرض مواقيت الصلاة لليوم داخل حقل نصي قابل للقراءة.</li>
+        <li><strong>عرض الصلاة القادمة:</strong> اضغط على الاختصار <strong class="shortcut">NVDA+Shift+P</strong> لمعرفة وقت الصلاة القادمة.</li>
+    </ul>
+    
+    <blockquote>
+        <p><strong>ملاحظة:</strong> يمكن تخصيص جميع هذه الاختصارات من خلال مربع حوار "إيماءات الإدخال" (Input Gestures) في NVDA.</p>
+    </blockquote>
+    
+    <h3>التخزين المؤقت (الحفظ المسبق)</h3>
+    <p>لتوفير نتائج فورية، تقوم الإضافة بحفظ مواقيت الصلاة مؤقتًا عند أول ضغطة على الاختصار خلال جلسة NVDA الحالية. يتم مسح ذاكرة التخزين المؤقت هذه تلقائيًا عند إعادة تشغيل NVDA أو عند الضغط على زر <strong>موافق (OK)</strong> في مربع حوار الإعدادات.</p>
+    
+    <hr>
+    
+    <h2>اللغات المدعومة</h2>
+    <p>تدعم الإضافة حاليًا اللغات التالية:</p>
+    <ul>
+        <li>العربية</li>
+        <li>الإنجليزية</li>
+        <li>الألمانية</li>
+        <li>التركية</li>
+    </ul>
+    <p><em>ملاحظة: المطور يحافظ بنشاط على الترجمات العربية، والإنجليزية، والألمانية.</em></p>
+    
+    <h3>المساهمة في الترجمة</h3>
+    <p>إذا كنت ترغب في ترجمة الإضافة إلى لغة أخرى، يرجى إرسال طلب سحب (Pull Request). يجب أن تتضمن المساهمة الكاملة في الترجمة ما يلي:</p>
+    <ul>
+        <li>جميع نصوص الواجهة المترجمة (ملفات <code>.po</code>).</li>
+        <li>نسخة مترجمة من هذا الدليل.</li>
+    </ul>
+    
+    <hr>
+    
+    <h2>المساهمات</h2>
+    <p>نقدر بشدة المساهمات بجميع أنواعها! يمكنك مساعدة المشروع من خلال تقديم:</p>
+    <ul>
+        <li>إصلاح الأخطاء والإبلاغ عن المشكلات.</li>
+        <li>إضافة ميزات جديدة.</li>
+        <li>تحسين الكود وإعادة هيكلته.</li>
+        <li>تحديثات الترجمة المحلية.</li>
+        <li>الاقتراحات والآراء العامة.</li>
+    </ul>
+    
+    <h2>الترخيص</h2>
+    <p>هذه الإضافة هي برنامج مفتوح المصدر مرخص بموجب <strong>رخصة جنو العمومية الإصدار 2.0 (GPL-2.0)</strong>.</p>
+</body>
+</html>

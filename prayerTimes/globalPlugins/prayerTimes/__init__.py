@@ -1,7 +1,7 @@
 import datetime
 import threading
 import api
-from . import aladhan
+from . import handler
 from gui import SettingsPanel, NVDASettingsDialog,guiHelper
 import config
 import wx
@@ -10,310 +10,116 @@ import globalPluginHandler
 import ui
 from scriptHandler import script
 import addonHandler
+import tones
 addonHandler.initTranslation()
-countries = {
-	'AE': 'United Arab Emirates',
-	'AL': 'Albania',
-	'AM': 'Armenia',
-	'AN': 'Netherlands Antilles',
-	'AR': 'Argentina',
-	'AT': 'Austria',
-	'AU': 'Australia',
-	'AZ': 'Azerbaijan',
-	'BA': 'Bosnia and Herzegovina',
-	'BD': 'Bangladesh',
-	'BE': 'Belgium',
-	'BF': 'Burkina Faso',
-	'BG': 'Bulgaria',
-	'BH': 'Bahrain',
-	'BI': 'Burundi',
-	'BJ': 'Benin',
-	'BM': 'Bermuda',
-	'BN': 'Brunei Darussalam',
-	'BO': 'Bolivia',
-	'BR': 'Brazil',
-	'BS': 'Bahama',
-	'BT': 'Bhutan',
-	'BV': 'Bouvet Island',
-	'BW': 'Botswana',
-	'BY': 'Belarus',
-	'BZ': 'Belize',
-	'CA': 'Canada',
-	'CC': 'Cocos (Keeling) Islands',
-	'CF': 'Central African Republic',
-	'CG': 'Congo',
-	'CH': 'Switzerland',
-	'CI': 'Côte D\'ivoire (Ivory Coast)',
-	'CK': 'Cook Iislands',
-	'CL': 'Chile',
-	'CM': 'Cameroon',
-	'CN': 'China',
-	'CO': 'Colombia',
-	'CR': 'Costa Rica',
-	'CU': 'Cuba',
-	'CV': 'Cape Verde',
-	'CX': 'Christmas Island',
-	'CY': 'Cyprus',
-	'CZ': 'Czech Republic',
-	'DE': 'Germany',
-	'DJ': 'Djibouti',
-	'DK': 'Denmark',
-	'DM': 'Dominica',
-	'DO': 'Dominican Republic',
-	'DZ': 'Algeria',
-	'EC': 'Ecuador',
-	'EE': 'Estonia',
-	'EG': 'Egypt',
-	'EH': 'Western Sahara',
-	'ER': 'Eritrea',
-	'ES': 'Spain',
-	'ET': 'Ethiopia',
-	'FI': 'Finland',
-	'FJ': 'Fiji',
-	'FK': 'Falkland Islands (Malvinas)',
-	'FM': 'Micronesia',
-	'FO': 'Faroe Islands',
-	'FR': 'France',
-	'FX': 'France, Metropolitan',
-	'GA': 'Gabon',
-	'GB': 'United Kingdom (Great Britain)',
-	'GD': 'Grenada',
-	'GE': 'Georgia',
-	'GF': 'French Guiana',
-	'GH': 'Ghana',
-	'GI': 'Gibraltar',
-	'GL': 'Greenland',
-	'GM': 'Gambia',
-	'GN': 'Guinea',
-	'GP': 'Guadeloupe',
-	'GQ': 'Equatorial Guinea',
-	'GR': 'Greece',
-	'GS': 'South Georgia and the South Sandwich Islands',
-	'GT': 'Guatemala',
-	'GU': 'Guam',
-	'GW': 'Guinea-Bissau',
-	'GY': 'Guyana',
-	'HK': 'Hong Kong',
-	'HM': 'Heard & McDonald Islands',
-	'HN': 'Honduras',
-	'HR': 'Croatia',
-	'HT': 'Haiti',
-	'HU': 'Hungary',
-	'ID': 'Indonesia',
-	'IE': 'Ireland',
-	'IL': 'Israel',
-	'IN': 'India',
-	'IO': 'British Indian Ocean Territory',
-	'IQ': 'Iraq',
-	'IR': 'Islamic Republic of Iran',
-	'IS': 'Iceland',
-	'IT': 'Italy',
-	'JM': 'Jamaica',
-	'JO': 'Jordan',
-	'JP': 'Japan',
-	'KE': 'Kenya',
-	'KG': 'Kyrgyzstan',
-	'KH': 'Cambodia',
-	'KI': 'Kiribati',
-	'KM': 'Comoros',
-	'KN': 'St. Kitts and Nevis',
-	'KP': 'Korea, Democratic People\'s Republic of',
-	'KR': 'Korea, Republic of',
-	'KW': 'Kuwait',
-	'KY': 'Cayman Islands',
-	'KZ': 'Kazakhstan',
-	'LA': 'Lao People\'s Democratic Republic',
-	'LB': 'Lebanon',
-	'LC': 'Saint Lucia',
-	'LI': 'Liechtenstein',
-	'LK': 'Sri Lanka',
-	'LR': 'Liberia',
-	'LS': 'Lesotho',
-	'LT': 'Lithuania',
-	'LU': 'Luxembourg',
-	'LV': 'Latvia',
-	'LY': 'Libyan Arab Jamahiriya',
-	'MA': 'Morocco',
-	'MC': 'Monaco',
-	'MD': 'Moldova, Republic of',
-	'MG': 'Madagascar',
-	'MH': 'Marshall Islands',
-	'ML': 'Mali',
-	'MN': 'Mongolia',
-	'MM': 'Myanmar',
-	'MO': 'Macau',
-	'MP': 'Northern Mariana Islands',
-	'MQ': 'Martinique',
-	'MR': 'Mauritania',
-	'MS': 'Monserrat',
-	'MT': 'Malta',
-	'MU': 'Mauritius',
-	'MV': 'Maldives',
-	'MW': 'Malawi',
-	'MX': 'Mexico',
-	'MY': 'Malaysia',
-	'MZ': 'Mozambique',
-	'NA': 'Namibia',
-	'NC': 'New Caledonia',
-	'NE': 'Niger',
-	'NF': 'Norfolk Island',
-	'NG': 'Nigeria',
-	'NI': 'Nicaragua',
-	'NL': 'Netherlands',
-	'NO': 'Norway',
-	'NP': 'Nepal',
-	'NR': 'Nauru',
-	'NU': 'Niue',
-	'NZ': 'New Zealand',
-	'OM': 'Oman',
-	'PA': 'Panama',
-	'PE': 'Peru',
-	'PF': 'French Polynesia',
-	'PG': 'Papua New Guinea',
-	'PH': 'Philippines',
-	'PK': 'Pakistan',
-	'PL': 'Poland',
-	'PM': 'St. Pierre & Miquelon',
-	'PN': 'Pitcairn',
-	'PR': 'Puerto Rico',
-	'PT': 'Portugal',
-	'PW': 'Palau',
-	'PY': 'Paraguay',
-	'QA': 'Qatar',
-	'RE': 'Réunion',
-	'RO': 'Romania',
-	'RU': 'Russian Federation',
-	'RW': 'Rwanda',
-	'SA': 'Saudi Arabia',
-	'SB': 'Solomon Islands',
-	'SC': 'Seychelles',
-	'SD': 'Sudan',
-	'SE': 'Sweden',
-	'SG': 'Singapore',
-	'SH': 'St. Helena',
-	'SI': 'Slovenia',
-	'SJ': 'Svalbard & Jan Mayen Islands',
-	'SK': 'Slovakia',
-	'SL': 'Sierra Leone',
-	'SM': 'San Marino',
-	'SN': 'Senegal',
-	'SO': 'Somalia',
-	'SR': 'Suriname',
-	'ST': 'Sao Tome & Principe',
-	'SV': 'El Salvador',
-	'SY': 'Syrian Arab Republic',
-	'SZ': 'Swaziland',
-	'TC': 'Turks & Caicos Islands',
-	'TD': 'Chad',
-	'TF': 'French Southern Territories',
-	'TG': 'Togo',
-	'TH': 'Thailand',
-	'TJ': 'Tajikistan',
-	'TK': 'Tokelau',
-	'TM': 'Turkmenistan',
-	'TN': 'Tunisia',
-	'TO': 'Tonga',
-	'TP': 'East Timor',
-	'TR': 'Turkey',
-	'TT': 'Trinidad & Tobago',
-	'TV': 'Tuvalu',
-	'TW': 'Taiwan, Province of China',
-	'TZ': 'Tanzania, United Republic of',
-	'UA': 'Ukraine',
-	'UG': 'Uganda',
-	'UM': 'United States Minor Outlying Islands',
-	'US': 'United States of America',
-	'UY': 'Uruguay',
-	'UZ': 'Uzbekistan',
-	'VA': 'Vatican City State (Holy See)',
-	'VC': 'St. Vincent & the Grenadines',
-	'VE': 'Venezuela',
-	'VG': 'British Virgin Islands',
-	'VI': 'United States Virgin Islands',
-	'VN': 'Viet Nam',
-	'VU': 'Vanuatu',
-	'WF': 'Wallis & Futuna Islands',
-	'WS': 'Samoa',
-	'YE': 'Yemen',
-	'YT': 'Mayotte',
-	'YU': 'Yugoslavia',
-	'ZA': 'South Africa',
-	'ZM': 'Zambia',
-	'ZR': 'Zaire',
-	'ZW': 'Zimbabwe',
-}
-
 roleSECTION = "prayerTimes"
 confspec = {
-"country": "string(default=EG)",
-"city": "string(default=cairo)"}
-
+"auto_detect": "boolean(default=true)",
+"lat": "string(default=0.0)",
+"lon": "string(default=0.0)"}
 config.conf.spec[roleSECTION] = confspec
-prayersDect={"Fajr":_("Fajr"),"Dhuhr":_("Dhuhr"),"Asr":_("Asr"),"Maghrib":_("Maghrib"),"Isha":_("Isha")}
-def change(key):
-	try:
-		return prayersDect[key]
-	except:
-		return key
-def getNextPrayer():
-	try:
-		client=aladhan.Client(aladhan.City(config.conf[roleSECTION]["city"],config.conf[roleSECTION]["country"]))
-		adhans = client.get_today_times()
-		for adhan in adhans:
-			time=str(datetime.datetime.strptime(str(adhan.readable_timing(show_date=False)),"%I:%M (%p)").strftime("%H : %M")).split(" : ")
-			now=str(datetime.datetime.now().strftime("%H:%M:%p")).split(":")
-			hour=int(time[0])
-			NowHour=int(now[0])
-			minute=int(time[1])
-			nowMinute=int(now[1])
-
-			if hour > NowHour:
-				return change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False)
-			if hour==NowHour:
-				if minute>=nowMinute:
-					return change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False)
-				else:
-					continue
-	except:
-		return _("error")
+cached_prayer_data = None
+def getNextPrayer(prayer_str):
+	lines = prayer_str.strip().split("\n")
+	prayers = []
+	for line in lines:
+		if not line or _("Sunrise") in line:
+			continue
+		name, t_str = line.split(":", 1)
+		p_time = datetime.datetime.strptime(t_str.strip(), "%I:%M %p").time()
+		prayers.append((name.strip(), t_str.strip(), p_time))
+	now_time = datetime.datetime.now().time()
+	for name, t_str, p_time in prayers:
+		if p_time > now_time:
+			return f"{name}: {t_str}"
+	if prayers:
+		return f"{prayers[0][0]}: {prayers[0][1]}"
+	return ""
+class re(wx.Dialog):
+	def __init__(self, text, title):
+		super(re, self).__init__(gui.mainFrame, title=title)
+		sizer = wx.BoxSizer(wx.VERTICAL)
+		self.outputCtrl = wx.TextCtrl(self,style=wx.TE_MULTILINE | wx.TE_READONLY | wx.TE_RICH)
+		self.outputCtrl .Bind(wx.EVT_KEY_DOWN, self.onOutputKeyDown)
+		sizer.Add(self.outputCtrl, proportion=1, flag=wx.EXPAND)
+		self.SetSizer(sizer)
+		sizer.Fit(self)
+		self.outputCtrl.SetValue(text)
+		self.outputCtrl.SetFocus()
+		self.Raise()
+		self.Maximize()
+		self.Show()
+	def onOutputKeyDown(self, event):
+		if event.GetKeyCode() == wx.WXK_ESCAPE:
+			self.Close()
+		event.Skip()
 class CRSettingsPanel(SettingsPanel):
 	title = _("prayer times")
 	def makeSettings(self, settingsSizer):
 		sHelper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
-		self.tlable = sHelper.addItem(wx.StaticText(self, label=_("select country"), name="ts"))
-		self.sou= sHelper.addItem(wx.Choice(self, name="ts"))
-		self.tlable1 = sHelper.addItem(wx.StaticText(self, label=_("type your city"), name="ts1"))
-		self.sou1= sHelper.addItem(wx.TextCtrl(self, name="ts1"))
-		self.sou.Set(list(countries.values()))
-		self.sou.SetStringSelection(str(countries[config.conf[roleSECTION]["country"]]))
-		self.sou1.SetValue(config.conf[roleSECTION]["city"])
-		self.coun={}
-		for key,value in countries.items():
-			self.coun[value]=key
-
+		self.auto_detect = sHelper.addItem(wx.CheckBox(self, label=_("Detect location automatically. Not accurate in all cases")))
+		self.auto_detect.SetValue(config.conf[roleSECTION]["auto_detect"])
+		self.auto_detect.Bind(wx.EVT_CHECKBOX, self.on_toggle_auto)
+		self.lat_label = sHelper.addItem(wx.StaticText(self, label=_("Latitude")))
+		self.lat_ctrl = sHelper.addItem(wx.TextCtrl(self))
+		self.lat_ctrl.SetValue(config.conf[roleSECTION]["lat"])
+		self.lat_ctrl.Bind(wx.EVT_CHAR, self.on_char)
+		self.lon_label = sHelper.addItem(wx.StaticText(self, label=_("Longitude")))
+		self.lon_ctrl = sHelper.addItem(wx.TextCtrl(self))
+		self.lon_ctrl.SetValue(config.conf[roleSECTION]["lon"])
+		self.lon_ctrl.Bind(wx.EVT_CHAR, self.on_char)
+		self.on_toggle_auto(None)
+	def on_char(self, event):
+		k = event.GetUnicodeKey()
+		if k >= 32 and chr(k).isalpha():
+			return
+		event.Skip()
+	def on_toggle_auto(self, event):
+		state = not self.auto_detect.GetValue()
+		self.lat_label.Enable(state)
+		self.lat_ctrl.Enable(state)
+		self.lon_label.Enable(state)
+		self.lon_ctrl.Enable(state)
 	def postInit(self):
-		self.sou.SetFocus()
+		self.auto_detect.SetFocus()
 	def onSave(self):
-		config.conf[roleSECTION]["country"]=self.coun[self.sou.StringSelection]
-		config.conf[roleSECTION]["city"]=self.sou1.Value
+		global cached_prayer_data
+		cached_prayer_data = None
+		config.conf[roleSECTION]["auto_detect"] = self.auto_detect.GetValue()
+		lat_val = self.lat_ctrl.GetValue().strip()
+		lon_val = self.lon_ctrl.GetValue().strip()
+		config.conf[roleSECTION]["lat"] = lat_val if lat_val else "0.0"
+		config.conf[roleSECTION]["lon"] = lon_val if lon_val else "0.0"
 class GlobalPlugin(globalPluginHandler.GlobalPlugin):
 	NVDASettingsDialog.categoryClasses.append(CRSettingsPanel)
 	scriptCategory= _("prayer times")
+	def fetch_data(self, callback):
+		global cached_prayer_data
+		if cached_prayer_data is not None:
+			tones.beep(500, 100)
+			wx.CallAfter(callback, cached_prayer_data)
+			return
+		try:
+			if config.conf[roleSECTION]["auto_detect"]:
+				lat, lon = handler.detectLocation()
+			else:
+				lat = float(config.conf[roleSECTION]["lat"])
+				lon = float(config.conf[roleSECTION]["lon"])
+			cached_prayer_data = handler.getCurrentPrayerTimes(lat, lon)
+			prayer_data = cached_prayer_data 
+		except Exception as e:
+			prayer_data = _("error")
+		tones.beep(500, 100)
+		wx.CallAfter(callback, prayer_data )
 	@script(gesture="kb:NVDA+alt+p")
 	def script_toggle(self,gesture):
 		ui.message(_("loading"))
-		try:
-			client=aladhan.Client(aladhan.City(config.conf[roleSECTION]["city"],config.conf[roleSECTION]["country"]))
-			adhans = client.get_today_times()
-			for adhan in adhans:
-				ui.message(change(adhan.get_en_name()) + _(" at") +  adhan.readable_timing(show_date=False))
-		except Exception as e:
-			ui.message(_("error"))
-	script_toggle.__doc__= _("say prayer times")
+		threading.Thread(target=self.fetch_data, args=(lambda res: re(res, _("Result")),)).start()
+	script_toggle.__doc__= _("Get current prayer times")
 	@script(gesture="kb:NVDA+shift+p")
 	def script_toggle1(self,gesture):
 		ui.message(_("loading"))
-		ui.message(getNextPrayer())
-	script_toggle1.__doc__= _("say next prayer time")
+		threading.Thread(target=self.fetch_data, args=(lambda res: ui.message(getNextPrayer(res)),)).start()
+	script_toggle1.__doc__= _("Get next prayer time")
 	def terminate(self):
 		NVDASettingsDialog.categoryClasses.remove(CRSettingsPanel)

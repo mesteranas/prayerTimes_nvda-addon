@@ -5,83 +5,91 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-03-02 13:48+0200\n"
+"POT-Creation-Date: 2026-06-04 13:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=cp1252\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
 
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
-msgid "Asr"
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:26
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:30
+msgid "Sunrise"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
-msgid "Dhuhr"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
-msgid "Fajr"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
-msgid "Isha"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:252
-msgid "Maghrib"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:271
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:274
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:309
-msgid " at"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:278
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:311
-msgid "error"
-msgstr ""
-
-#:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:280
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:301
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:57
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:95
 msgid "prayer times"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:283
-msgid "select country"
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:60
+msgid "Detect location automatically. Not accurate in all cases"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:285
-msgid "type your city"
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:63
+msgid "Latitude"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:304
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:315
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:67
+msgid "Longitude"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:111
+msgid "error"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:116
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:121
 msgid "loading"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:312
-msgid "say prayer times"
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:117
+msgid "Result"
 msgstr ""
 
 #:
-#: C:\Users\Mesteranas1\AppData\Roaming\nvda\addons\prayerTimes\globalPlugins\prayerTimes\__init__.py:317
-msgid "say next prayer time"
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:118
+msgid "Get current prayer times"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\__init__.py:123
+msgid "Get next prayer time"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:29
+msgid "Fajr"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:31
+msgid "Dhuhr"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:32
+msgid "Asr"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:33
+msgid "Maghrib"
+msgstr ""
+
+#:
+#: D:\windows\folders\Github desktop\prayerTimes_nvda-addon\prayerTimes\globalPlugins\prayerTimes\handler.py:34
+msgid "Isha"
 msgstr ""
 
