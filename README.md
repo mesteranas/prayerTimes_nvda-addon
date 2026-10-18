@@ -3,7 +3,7 @@
 An NVDA add-on for Islamic prayer times, with manual or IP-based location,
 selectable calculation methods and 12/24-hour display.
 
-This checkout contains **2.1.0-dev**, a local development version. It is not a
+This checkout contains **2.1.0-dev2**, a local development version. It is not a
 published release and has not completed live NVDA acceptance testing.
 
 ## Use

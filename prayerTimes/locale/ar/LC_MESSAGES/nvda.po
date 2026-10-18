@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: prayerTimes 2.1.0-dev\n"
+"Project-Id-Version: prayerTimes 2.1.0-dev2\n"
 "POT-Creation-Date: 2026-06-04 13:42+0300\n"
 "PO-Revision-Date: 2026-06-04 13:46+0300\n"
 "Last-Translator: \n"
@@ -20,36 +20,36 @@ msgstr ""
 msgid "Sunrise"
 msgstr "شروق الشمس"
 
-#: globalPlugins/prayerTimes/__init__.py:112
-#: globalPlugins/prayerTimes/__init__.py:194
+#: globalPlugins/prayerTimes/__init__.py:113
+#: globalPlugins/prayerTimes/__init__.py:195
 msgid "prayer times"
 msgstr "مواقيت الصلاة"
 
-#: globalPlugins/prayerTimes/__init__.py:118
+#: globalPlugins/prayerTimes/__init__.py:119
 msgid "Detect location automatically. Not accurate in all cases"
 msgstr "تحديد الموقع تلقائيا. ليست دقيقة في جميع الحالات"
 
-#: globalPlugins/prayerTimes/__init__.py:122
+#: globalPlugins/prayerTimes/__init__.py:123
 msgid "Latitude"
 msgstr "دائر العرض"
 
-#: globalPlugins/prayerTimes/__init__.py:123
+#: globalPlugins/prayerTimes/__init__.py:124
 msgid "Longitude"
 msgstr "خط الطول"
 
-#: globalPlugins/prayerTimes/__init__.py:221
+#: globalPlugins/prayerTimes/__init__.py:222
 msgid "loading"
 msgstr "جاري التحميل"
 
-#: globalPlugins/prayerTimes/__init__.py:66
+#: globalPlugins/prayerTimes/__init__.py:67
 msgid "Result"
 msgstr "نتيجة"
 
-#: globalPlugins/prayerTimes/__init__.py:298
+#: globalPlugins/prayerTimes/__init__.py:299
 msgid "Get current prayer times"
 msgstr "الحصول على أوقات الصلاة الحالية"
 
-#: globalPlugins/prayerTimes/__init__.py:302
+#: globalPlugins/prayerTimes/__init__.py:303
 msgid "Get next prayer time"
 msgstr "الحصول على وقت الصلاة القادمة"
 
@@ -77,11 +77,11 @@ msgstr "العشاء"
 msgid "Algeria"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "Angle based"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:139
+#: globalPlugins/prayerTimes/__init__.py:140
 msgid "Asr calculation"
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Automatic (based on location)"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:126
+#: globalPlugins/prayerTimes/__init__.py:127
 msgid "Calculation method"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Check the prayer calculation settings."
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:77
+#: globalPlugins/prayerTimes/__init__.py:78
 msgid "Close"
 msgstr ""
 
@@ -133,11 +133,11 @@ msgstr ""
 msgid "Gulf Region"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:141
+#: globalPlugins/prayerTimes/__init__.py:142
 msgid "Hanafi"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:145
+#: globalPlugins/prayerTimes/__init__.py:146
 msgid "High latitude adjustment"
 msgstr ""
 
@@ -145,7 +145,7 @@ msgstr ""
 msgid "Institute of Geophysics, University of Tehran"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:171
+#: globalPlugins/prayerTimes/__init__.py:172
 msgid "Invalid coordinates"
 msgstr ""
 
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Majlis Ugama Islam Singapura, Singapore"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "Middle of the night"
 msgstr ""
 
@@ -189,11 +189,11 @@ msgstr ""
 msgid "Muslim World League"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "One seventh of the night"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:71
+#: globalPlugins/prayerTimes/__init__.py:72
 msgid "Prayer times"
 msgstr ""
 
@@ -219,7 +219,7 @@ msgstr ""
 msgid "Spiritual Administration of Muslims of Russia"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:141
+#: globalPlugins/prayerTimes/__init__.py:142
 msgid "Standard (Shafi'i, Maliki, Hanbali)"
 msgstr ""
 
@@ -274,7 +274,7 @@ msgstr ""
 msgid "University of Islamic Sciences, Karachi"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:150
+#: globalPlugins/prayerTimes/__init__.py:151
 msgid "Use 24-hour time format"
 msgstr ""
 
@@ -288,7 +288,7 @@ msgstr ""
 msgid "{prayer}. Time zone: {zone}"
 msgstr ""
 
-#: globalPlugins/prayerTimes/__init__.py:132
+#: globalPlugins/prayerTimes/__init__.py:133
 msgid ""
 "Choose the method recommended by your local prayer authority. Automatic "
 "selection may differ."

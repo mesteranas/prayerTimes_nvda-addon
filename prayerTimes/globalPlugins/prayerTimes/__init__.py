@@ -22,8 +22,9 @@ from . import handler
 from .service import Options, PrayerError, PrayerService, StaleRequest, UTC, coordinate
 
 SECTION = "prayerTimes"
-# Before registering defaults: upgrading V2.0 must keep its method 5.
-_had_settings = SECTION in config.conf
+# Read raw profiles: membership in ConfigManager resolves and caches sections
+# (or missing keys), binding them to an empty spec before ours is registered.
+_had_settings = any(SECTION in profile for profile in config.conf.profiles)
 try:
     _legacy_upgrade = json.loads(
         (Path(__file__).parents[2] / "_installation.json").read_text(encoding="utf-8")

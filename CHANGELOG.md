@@ -1,3 +1,10 @@
+# 2.1.0-dev2 — configuration initialization fix
+
+- Inspect raw profiles before registering defaults, avoiding NVDA's cached
+  missing settings/empty schema on startup. This fixes the settings category
+  failing to open and commands stopping after the loading announcement.
+- Exercise cached section/spec behavior in the configuration test boundary.
+
 # 2.1.0-dev — local development
 
 - Separate prayer identities and aware datetimes from translated display text.

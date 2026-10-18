@@ -1,5 +1,6 @@
 """Import the real plugin with controlled NVDA/wx boundaries; no screen-reader claims."""
 
+import ast
 import gettext
 import importlib.util
 import inspect
@@ -38,23 +39,53 @@ def plugin(monkeypatch):
             sys.modules, "addonHandler", types.SimpleNamespace(initTranslation=init_translation)
         )
 
-        class Config(dict):
-            spec = {}
+        class Section(dict):
+            def __init__(self, values, spec):
+                super().__init__(values)
+                self.spec = spec
+
+            def __missing__(self, key):
+                rule = self.spec[key]
+                call = ast.parse(rule, mode="eval").body
+                default = next(kw.value for kw in call.keywords if kw.arg == "default")
+                if isinstance(default, ast.Name):
+                    value = {"true": True, "false": False}[default.id]
+                else:
+                    value = ast.literal_eval(default)
+                value = str(value) if call.func.id == "string" else value
+                self[key] = value
+                return value
+
+        class Config:
+            """Model NVDA's cached section/spec binding, including membership reads."""
+
+            def __init__(self, values):
+                self.spec = {}
+                self.profiles = [values]
+                self.cache = {}
+
+            def __contains__(self, key):
+                try:
+                    self[key]
+                except KeyError:
+                    return False
+                return True
 
             def __getitem__(self, key):
-                values = super().setdefault(key, {})
-                defaults = {
-                    "auto_detect": False,
-                    "lat": "41.0",
-                    "lon": "29.0",
-                    "method": 5,
-                    "school": 0,
-                    "latitude_adjustment": 3,
-                    "use_24h": True,
-                }
-                for k, value in defaults.items():
-                    values.setdefault(k, value)
-                return values
+                if key in self.cache:
+                    value = self.cache[key]
+                    if value is KeyError:
+                        raise KeyError(key)
+                    return value
+                if key not in self.spec and key not in self.profiles[0]:
+                    self.cache[key] = KeyError
+                    raise KeyError(key)
+                # NVDA creates an empty spec for an existing unregistered section.
+                # Replacing the parent spec later leaves this object bound to it.
+                spec = self.spec.setdefault(key, {})
+                value = Section(self.profiles[0].get(key, {}), spec)
+                self.cache[key] = value
+                return value
 
         conf = Config(
             {"prayerTimes": {"auto_detect": False, "lat": "41.0", "lon": "29.0"}} if existing else {}
@@ -137,6 +168,21 @@ def test_existing_and_new_method_defaults(plugin):
 
 def test_v20_upgrade_without_saved_settings_preserves_method(plugin):
     assert plugin(existing=False, legacy=True).module.read_options().method == 5
+
+
+@pytest.mark.parametrize("existing", [True, False])
+def test_partial_or_new_config_resolves_defaults_after_schema_registration(plugin, existing):
+    env = plugin(existing=existing)
+    values = env.conf["prayerTimes"]
+    assert values["auto_detect"] is (not existing)
+    assert values["school"] == 0
+    assert values["latitude_adjustment"] == 3
+    assert values["use_24h"] is True
+    # The section must hold the registered schema, not a stale empty mapping.
+    assert values.spec is env.conf.spec["prayerTimes"]
+    obj = env.module.GlobalPlugin()
+    obj._request("next")
+    assert len(env.workers) == 1
 
 
 def test_installation_records_old_version_without_touching_config(plugin, tmp_path):

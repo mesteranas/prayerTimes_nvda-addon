@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: prayerTimes 2.1.0-dev\n"
+"Project-Id-Version: prayerTimes 2.1.0-dev2\n"
 "POT-Creation-Date: 2024-03-02 13:48+0200\n"
 "PO-Revision-Date: 2026-10-18 00:00+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"
@@ -36,12 +36,12 @@ msgstr "Yatsı"
 msgid "Maghrib"
 msgstr "Akşam"
 
-#: globalPlugins/prayerTimes/__init__.py:112
-#: globalPlugins/prayerTimes/__init__.py:194
+#: globalPlugins/prayerTimes/__init__.py:113
+#: globalPlugins/prayerTimes/__init__.py:195
 msgid "prayer times"
 msgstr "Namaz Vakitleri"
 
-#: globalPlugins/prayerTimes/__init__.py:221
+#: globalPlugins/prayerTimes/__init__.py:222
 msgid "loading"
 msgstr "Yükleniyor"
 
@@ -49,11 +49,11 @@ msgstr "Yükleniyor"
 msgid "Algeria"
 msgstr "Cezayir"
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "Angle based"
 msgstr "Açıya göre"
 
-#: globalPlugins/prayerTimes/__init__.py:139
+#: globalPlugins/prayerTimes/__init__.py:140
 msgid "Asr calculation"
 msgstr "İkindi hesabı"
 
@@ -61,7 +61,7 @@ msgstr "İkindi hesabı"
 msgid "Automatic (based on location)"
 msgstr "Otomatik (konuma göre)"
 
-#: globalPlugins/prayerTimes/__init__.py:126
+#: globalPlugins/prayerTimes/__init__.py:127
 msgid "Calculation method"
 msgstr "Hesaplama yöntemi"
 
@@ -73,7 +73,7 @@ msgstr "Hesaplama yöntemi: {method}"
 msgid "Check the prayer calculation settings."
 msgstr "Namaz hesaplama ayarlarını kontrol edin."
 
-#: globalPlugins/prayerTimes/__init__.py:77
+#: globalPlugins/prayerTimes/__init__.py:78
 msgid "Close"
 msgstr "Kapat"
 
@@ -85,7 +85,7 @@ msgstr "Lizbon İslam Toplumu"
 msgid "Date: {date}"
 msgstr "Tarih: {date}"
 
-#: globalPlugins/prayerTimes/__init__.py:118
+#: globalPlugins/prayerTimes/__init__.py:119
 msgid "Detect location automatically. Not accurate in all cases"
 msgstr "Konumu otomatik algıla (her durumda tam doğru olmayabilir)"
 
@@ -105,11 +105,11 @@ msgstr "-90 ile 90 arasında bir enlem girin."
 msgid "Enter a longitude between -180 and 180."
 msgstr "-180 ile 180 arasında bir boylam girin."
 
-#: globalPlugins/prayerTimes/__init__.py:298
+#: globalPlugins/prayerTimes/__init__.py:299
 msgid "Get current prayer times"
 msgstr "Güncel namaz vakitlerini gösterir"
 
-#: globalPlugins/prayerTimes/__init__.py:302
+#: globalPlugins/prayerTimes/__init__.py:303
 msgid "Get next prayer time"
 msgstr "Sonraki namaz vaktini söyler"
 
@@ -117,11 +117,11 @@ msgstr "Sonraki namaz vaktini söyler"
 msgid "Gulf Region"
 msgstr "Körfez Bölgesi"
 
-#: globalPlugins/prayerTimes/__init__.py:141
+#: globalPlugins/prayerTimes/__init__.py:142
 msgid "Hanafi"
 msgstr "Hanefi"
 
-#: globalPlugins/prayerTimes/__init__.py:145
+#: globalPlugins/prayerTimes/__init__.py:146
 msgid "High latitude adjustment"
 msgstr "Yüksek enlem düzeltmesi"
 
@@ -129,7 +129,7 @@ msgstr "Yüksek enlem düzeltmesi"
 msgid "Institute of Geophysics, University of Tehran"
 msgstr "Tahran Üniversitesi Jeofizik Enstitüsü"
 
-#: globalPlugins/prayerTimes/__init__.py:171
+#: globalPlugins/prayerTimes/__init__.py:172
 msgid "Invalid coordinates"
 msgstr "Geçersiz koordinatlar"
 
@@ -149,11 +149,11 @@ msgstr "Endonezya Cumhuriyeti Din İşleri Bakanlığı"
 msgid "Kuwait"
 msgstr "Kuveyt"
 
-#: globalPlugins/prayerTimes/__init__.py:122
+#: globalPlugins/prayerTimes/__init__.py:123
 msgid "Latitude"
 msgstr "Enlem"
 
-#: globalPlugins/prayerTimes/__init__.py:123
+#: globalPlugins/prayerTimes/__init__.py:124
 msgid "Longitude"
 msgstr "Boylam"
 
@@ -161,7 +161,7 @@ msgstr "Boylam"
 msgid "Majlis Ugama Islam Singapura, Singapore"
 msgstr "Singapur İslam Din Konseyi"
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "Middle of the night"
 msgstr "Gecenin yarısı"
 
@@ -181,11 +181,11 @@ msgstr "Fas"
 msgid "Muslim World League"
 msgstr "Dünya İslam Birliği"
 
-#: globalPlugins/prayerTimes/__init__.py:147
+#: globalPlugins/prayerTimes/__init__.py:148
 msgid "One seventh of the night"
 msgstr "Gecenin yedide biri"
 
-#: globalPlugins/prayerTimes/__init__.py:71
+#: globalPlugins/prayerTimes/__init__.py:72
 msgid "Prayer times"
 msgstr "Namaz vakitleri"
 
@@ -205,7 +205,7 @@ msgstr "Namaz vakitleri alınamadı. Yeniden deneyin."
 msgid "Qatar"
 msgstr "Katar"
 
-#: globalPlugins/prayerTimes/__init__.py:66
+#: globalPlugins/prayerTimes/__init__.py:67
 msgid "Result"
 msgstr "Namaz Vakitleri Sonucu"
 
@@ -217,7 +217,7 @@ msgstr "Şii Caferi, Leva Enstitüsü, Kum"
 msgid "Spiritual Administration of Muslims of Russia"
 msgstr "Rusya Müslümanları Dinî İdaresi"
 
-#: globalPlugins/prayerTimes/__init__.py:141
+#: globalPlugins/prayerTimes/__init__.py:142
 msgid "Standard (Shafi'i, Maliki, Hanbali)"
 msgstr "Standart (Şafii, Maliki, Hanbeli)"
 
@@ -278,7 +278,7 @@ msgstr "Fransa İslam Kuruluşları Birliği"
 msgid "University of Islamic Sciences, Karachi"
 msgstr "İslam Bilimleri Üniversitesi, Karaçi"
 
-#: globalPlugins/prayerTimes/__init__.py:150
+#: globalPlugins/prayerTimes/__init__.py:151
 msgid "Use 24-hour time format"
 msgstr "24 saatlik zaman biçimini kullan"
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "{prayer}. Time zone: {zone}"
 msgstr "{prayer}. Saat dilimi: {zone}"
 
-#: globalPlugins/prayerTimes/__init__.py:132
+#: globalPlugins/prayerTimes/__init__.py:133
 msgid ""
 "Choose the method recommended by your local prayer authority. Automatic "
 "selection may differ."
