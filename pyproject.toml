@@ -6,6 +6,10 @@ line-length = 110
 extend-exclude = ["prayerTimes/globalPlugins/prayerTimes/_vendor"]
 builtins = ["_"]
 
+[tool.ruff.lint]
+# Keep the checked rule set stable across Ruff default changes.
+select = ["E4", "E7", "E9", "F"]
+
 [tool.ruff.lint.per-file-ignores]
 "prayerTimes/globalPlugins/prayerTimes/__init__.py" = ["E402"]
 
