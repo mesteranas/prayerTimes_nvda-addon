@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 110
+extend-exclude = ["prayerTimes/globalPlugins/prayerTimes/_vendor"]
+builtins = ["_"]
+
+[tool.ruff.lint.per-file-ignores]
+"prayerTimes/globalPlugins/prayerTimes/__init__.py" = ["E402"]
+
+[tool.ruff.format]
+quote-style = "double"

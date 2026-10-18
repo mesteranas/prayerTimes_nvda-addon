@@ -1,0 +1,11 @@
+{
+  "tzdata_version": "2026.5",
+  "wheel": "tzdata-2026.5-py2.py3-none-any.whl",
+  "wheel_sha256": "b683bd1b6659ddcd810ff02ad09ba821d4bf1065072805063eb35c49617905ac",
+  "python_reader": "3.13.7",
+  "upstream_reader_sha256": {
+    "_zoneinfo.py": "5839255e6b04fbd4a05a828c44438ce914d7ef996fd48e6566b19e730f1f2fe7",
+    "_common.py": "78ec9152926df16b076eab53cfecc7648c79ce5625a64944f23d387c9b626fff"
+  },
+  "local_changes": "Python 3.7 syntax/positional parameters, strict zip replacement, truncated-footer guard, explicit TZif loading"
+}
