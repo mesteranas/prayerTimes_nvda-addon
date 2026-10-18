@@ -168,10 +168,11 @@ def test_network_failures_and_timeout(svc, monkeypatch, failure, code):
 def test_https_location(svc, monkeypatch):
     def get(url, params):
         assert url == "https://ipwho.is/"
-        return {"success": True, "latitude": 41.0, "longitude": 29.0}
+        assert "city" in params["fields"] and "country" in params["fields"]
+        return {"success": True, "latitude": 41.0, "longitude": 29.0, "city": "Istanbul", "country": "Turkey"}
 
     monkeypatch.setattr(svc, "_get_json", get)
-    assert svc.detect_location() == (41.0, 29.0)
+    assert svc.detect_location() == svc.Location(41.0, 29.0, "Istanbul, Turkey")
 
 
 def make_service(
@@ -274,7 +275,7 @@ def test_location_refresh_after_one_hour(svc):
 
     def locate():
         locations.append(True)
-        return 41, 29
+        return svc.Location(41, 29, "Istanbul, Turkey")
 
     service, clock, _ = make_service(svc, locator=locate)
     service.get_data(svc.Options())
@@ -283,6 +284,91 @@ def test_location_refresh_after_one_hour(svc):
     clock[0] += timedelta(hours=1)
     service.get_data(svc.Options())
     assert len(locations) == 2
+
+
+def test_location_names_follow_actual_calculation_coordinates(svc):
+    detected = svc.Location(39.9334, 32.8597, "Ankara, TR")
+    service, _, calls = make_service(svc, locator=lambda: detected)
+    data = service.get_data(svc.Options())
+    assert data.location == detected and calls[-1][:2] == detected.coordinates
+    assert service.cached_location() == detected
+    service.invalidate()
+    assert service.cached_location() is None
+    data = service.get_data(
+        svc.Options(auto_detect=False, latitude=48.85, longitude=2.35, location_name="Paris, FR")
+    )
+    assert data.location == svc.Location(48.85, 2.35, "Paris, FR")
+    assert calls[-1][:2] == data.location.coordinates
+
+
+def test_location_search_is_explicit_localized_and_validates_matches(svc, monkeypatch):
+    calls = []
+
+    def get(url, params):
+        calls.append((url, params))
+        return {
+            "results": [
+                {
+                    "name": "Ankara",
+                    "admin1": "Ankara",
+                    "country": "Türkiye",
+                    "country_code": "TR",
+                    "latitude": 39.93,
+                    "longitude": 32.86,
+                },
+                {
+                    "name": "Ankara",
+                    "admin1": "Ankara",
+                    "country": "Türkiye",
+                    "country_code": "TR",
+                    "latitude": 39.93,
+                    "longitude": 32.86,
+                },
+                {"name": "Invalid", "latitude": "nan", "longitude": 30},
+                None,
+                {
+                    "name": "Other Ankara",
+                    "admin1": "Other region",
+                    "country": "Other country",
+                    "latitude": 1,
+                    "longitude": 2,
+                },
+            ]
+        }
+
+    monkeypatch.setattr(svc, "_get_json", get)
+    with pytest.raises(svc.PrayerError, match="search_query"):
+        svc.search_locations(" ")
+    assert not calls
+    matches = svc.search_locations("  Ankara,   TR ", "tr_TR")
+    assert calls[0] == (
+        "https://geocoding-api.open-meteo.com/v1/search",
+        {"name": "Ankara", "count": 10, "language": "tr", "countryCode": "TR"},
+    )
+    assert len(matches) == 1 and matches[0].name == "Ankara, Türkiye, TR"
+    assert matches[0].coordinates == (39.93, 32.86)
+    matches = svc.search_locations("Ankara", "tr")
+    assert len(matches) == 2
+    assert matches[1].name == "Other Ankara, Other region, Other country"
+
+
+@pytest.mark.parametrize(
+    "raw,expected",
+    [
+        ({}, ()),
+        ({"results": []}, ()),
+        ({"error": True}, None),
+        ({"results": {}}, None),
+        ({"results": [None]}, None),
+    ],
+)
+def test_location_search_no_matches_and_invalid_response(svc, monkeypatch, raw, expected):
+    monkeypatch.setattr(svc, "_get_json", lambda *args: raw)
+    if expected is None:
+        with pytest.raises(svc.PrayerError, match="search_response"):
+            svc.search_locations("Ankara")
+    else:
+        assert svc.search_locations("Ankara") == expected
 
 
 def test_closed_service_does_not_fetch(svc):

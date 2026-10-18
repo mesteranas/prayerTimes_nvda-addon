@@ -19,6 +19,7 @@ import ui
 import wx
 
 from . import handler
+from .location_ui import LocationSettingsMixin
 from .service import Options, PrayerError, PrayerService, StaleRequest, UTC, coordinate
 
 SECTION = "prayerTimes"
@@ -41,6 +42,7 @@ config.conf.spec[SECTION] = {
     "use_24h": "boolean(default=true)",
     "school": "integer(default=0,min=0,max=1)",
     "latitude_adjustment": "integer(default=3,min=1,max=3)",
+    "location_name": "string(default='')",
 }
 if not _had_settings and not _legacy_upgrade:
     config.conf[SECTION]["method"] = -1
@@ -59,6 +61,7 @@ def read_options():
         school=values["school"],
         latitude_adjustment=values["latitude_adjustment"],
         use_24h=values["use_24h"],
+        location_name="" if auto else values["location_name"],
     )
 
 
@@ -109,19 +112,18 @@ class ResultDialog(wx.Dialog):
         self.Destroy()
 
 
-class PrayerSettingsPanel(SettingsPanel):
+class PrayerSettingsPanel(LocationSettingsMixin, SettingsPanel):
     title = _("prayer times")
 
     def makeSettings(self, settingsSizer):
         helper = guiHelper.BoxSizerHelper(self, sizer=settingsSizer)
         values = config.conf[SECTION]
-        self.auto_detect = helper.addItem(
-            wx.CheckBox(self, label=_("Detect location automatically. Not accurate in all cases"))
-        )
-        self.auto_detect.SetValue(values["auto_detect"])
-        self.auto_detect.Bind(wx.EVT_CHECKBOX, self.on_toggle_auto)
-        self.lat_ctrl = helper.addLabeledControl(_("Latitude"), wx.TextCtrl, value=values["lat"])
-        self.lon_ctrl = helper.addLabeledControl(_("Longitude"), wx.TextCtrl, value=values["lon"])
+        cached_auto = None
+        for instance in list(_instances):
+            cached_auto = instance._service.cached_location()
+            if cached_auto is not None:
+                break
+        self.make_location_settings(helper, values, cached_auto)
         self._methods = handler.methods()
         self.method = helper.addLabeledControl(
             _("Calculation method"), wx.Choice, choices=[name for _id, name in self._methods]
@@ -152,12 +154,6 @@ class PrayerSettingsPanel(SettingsPanel):
         self.use_24h.SetValue(values["use_24h"])
         self.on_toggle_auto(None)
 
-    def on_toggle_auto(self, event):
-        enabled = not self.auto_detect.GetValue()
-        # The helper also updates the associated label's enabled state.
-        self.lat_ctrl.Enable(enabled)
-        self.lon_ctrl.Enable(enabled)
-
     def postInit(self):
         self.auto_detect.SetFocus()
 
@@ -183,6 +179,7 @@ class PrayerSettingsPanel(SettingsPanel):
         if not values["auto_detect"]:
             values["lat"] = str(coordinate(self.lat_ctrl.GetValue()))
             values["lon"] = str(coordinate(self.lon_ctrl.GetValue(), latitude=False))
+        values["location_name"] = self.location_name_to_save()
         values["method"] = self._methods[self.method.GetSelection()][0]
         values["school"] = self.school.GetSelection()
         values["latitude_adjustment"] = self.latitude_adjustment.GetSelection() + 1

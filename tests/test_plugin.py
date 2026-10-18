@@ -118,6 +118,7 @@ def plugin(monkeypatch):
         )
         monkeypatch.setitem(sys.modules, "wx", wx)
         monkeypatch.setitem(sys.modules, "ui", types.SimpleNamespace(message=messages.append))
+        monkeypatch.setitem(sys.modules, "languageHandler", types.SimpleNamespace(getLanguage=lambda: "tr"))
         monkeypatch.setitem(
             sys.modules,
             "logHandler",
@@ -298,6 +299,7 @@ def make_panel(mod, lat, lon, auto=False):
     panel._methods = mod.handler.methods()
     panel.method = Control(next(i for i, (key, _) in enumerate(panel._methods) if key == 13))
     panel.school, panel.latitude_adjustment, panel.use_24h = Control(1), Control(2), Control(True)
+    panel._chosen_location = None
     return panel
 
 
@@ -332,3 +334,177 @@ def test_escape_close_and_other_keys_propagate(plugin):
     event.GetKeyCode = lambda: 40
     mod.ResultDialog._on_key(receiver, event)
     assert skipped
+
+
+def location_panel(env, monkeypatch, automatic=False):
+    """Build the full real settings panel with typed controls and queued workers."""
+    module = env.module
+    loc_ui = sys.modules[module.LocationSettingsMixin.__module__]
+
+    class Widget:
+        def __init__(self, parent, value="", choices=None, **kwargs):
+            self.value = value
+            self.items = list(choices or [])
+            self.selection = -1
+            self.enabled = True
+            self.focused = False
+            self.label = kwargs.get("label", "")
+
+        def Bind(self, *args):
+            pass
+
+        def GetValue(self):
+            return self.value
+
+        def SetValue(self, value):
+            self.value = value
+
+        def Enable(self, value):
+            self.enabled = value
+
+        def GetSelection(self):
+            return self.selection
+
+        def SetSelection(self, value):
+            self.selection = value
+
+        def SetItems(self, values):
+            self.items = list(values)
+            self.selection = -1
+
+        def Clear(self):
+            self.SetItems([])
+
+        def SetFocus(self):
+            self.focused = True
+
+        def Wrap(self, width):
+            pass
+
+    class Helper:
+        def __init__(self, parent, **kwargs):
+            self.parent = parent
+
+        def addItem(self, item):
+            return item
+
+        def addLabeledControl(self, label, control_type, **kwargs):
+            return control_type(self.parent, label=label, **kwargs)
+
+    for name in ("CheckBox", "TextCtrl", "Button", "Choice", "StaticText"):
+        monkeypatch.setattr(module.wx, name, Widget, raising=False)
+    for name in ("EVT_CHECKBOX", "EVT_BUTTON", "EVT_TEXT", "EVT_CHOICE", "TE_READONLY"):
+        monkeypatch.setattr(module.wx, name, 1, raising=False)
+    monkeypatch.setattr(module.wx, "NOT_FOUND", -1, raising=False)
+    monkeypatch.setattr(module.gui.guiHelper, "BoxSizerHelper", Helper, raising=False)
+    monkeypatch.setattr(loc_ui, "threading", module.threading)
+    env.conf["prayerTimes"]["auto_detect"] = automatic
+    panel = module.PrayerSettingsPanel()
+    panel.IsShownOnScreen = lambda: True
+    panel.IsBeingDeleted = lambda: False
+    panel.makeSettings(None)
+    return panel, loc_ui
+
+
+def test_full_panel_auto_preview_is_async_and_does_not_change_saved_location(plugin, monkeypatch):
+    env = plugin()
+    panel, loc_ui = location_panel(env, monkeypatch, automatic=True)
+    assert len(env.workers) == 1 and not panel.lat_ctrl.enabled
+    assert panel.location_summary.label and panel.lookup_status.label
+    place = loc_ui.Location(39.93, 32.86, "Ankara, Türkiye, TR")
+    monkeypatch.setattr(panel._location_service, "get_location", lambda: place)
+    env.workers.pop().run()
+    finish(env)
+    assert "Ankara" in panel.location_summary.value
+    assert "yaklaşık" in panel.location_summary.value
+    assert env.conf["prayerTimes"]["lat"] == "41.0"
+    assert not panel.location_summary.focused and not panel.use_place.enabled
+
+
+def test_search_requires_explicit_match_and_save_and_manual_edit_clears_name(plugin, monkeypatch):
+    env = plugin()
+    panel, loc_ui = location_panel(env, monkeypatch)
+    places = (loc_ui.Location(39.93, 32.86, "Ankara, TR"), loc_ui.Location(48.85, 2.35, "Paris, FR"))
+    monkeypatch.setattr(loc_ui, "search_locations", lambda query, language: places)
+    panel.search_query.SetValue("Ankara")
+    panel.on_search_location(None)
+    assert len(env.workers) == 1 and not panel.search_button.enabled
+    env.workers.pop().run()
+    finish(env)
+    assert panel.place_choices.items[0].startswith("Ankara")
+    assert panel.place_choices.GetSelection() == -1 and not panel.use_place.enabled
+    assert panel.lat_ctrl.value == "41.0"
+    panel.on_use_place(None)
+    assert panel.lat_ctrl.value == "41.0"
+    panel.place_choices.SetSelection(0)
+    panel.on_place_selected(None)
+    assert panel.use_place.enabled
+    panel.on_use_place(None)
+    assert not panel.auto_detect.GetValue() and panel.lat_ctrl.GetValue() == "39.93"
+    assert env.conf["prayerTimes"]["lat"] == "41.0"  # Apply/OK has not been activated.
+    panel.onSave()
+    assert env.conf["prayerTimes"]["location_name"] == "Ankara, TR"
+    assert env.module.read_options().location_name == "Ankara, TR"
+    panel.lon_ctrl.SetValue("30")
+    panel.on_coordinates_changed(types.SimpleNamespace(Skip=lambda: None))
+    panel.onSave()
+    assert env.conf["prayerTimes"]["location_name"] == ""
+    assert "Ankara" not in panel.location_summary.value
+
+
+def test_changed_search_query_cannot_apply_old_response(plugin, monkeypatch):
+    env = plugin()
+    panel, loc_ui = location_panel(env, monkeypatch)
+    monkeypatch.setattr(loc_ui, "search_locations", lambda *args: (loc_ui.Location(1, 2, "Old result"),))
+    panel.search_query.SetValue("Ankara")
+    panel.on_search_location(None)
+    env.workers.pop().run()
+    panel.search_query.SetValue("Paris")
+    panel.on_search_query_changed(types.SimpleNamespace(Skip=lambda: None))
+    finish(env)
+    assert not panel._places and not panel.use_place.enabled and panel.search_button.enabled
+
+
+def test_closing_panel_blocks_queued_lookup_and_cancel_does_not_save(plugin, monkeypatch):
+    env = plugin()
+    panel, loc_ui = location_panel(env, monkeypatch)
+    monkeypatch.setattr(loc_ui, "search_locations", lambda *args: (loc_ui.Location(1, 2, "Old result"),))
+    panel.search_query.SetValue("Ankara")
+    panel.on_search_location(None)
+    env.workers.pop().run()
+    panel.onDiscard()
+    finish(env)
+    assert not panel._places and env.conf["prayerTimes"]["lat"] == "41.0"
+
+
+def test_lookup_failure_reenables_controls_for_retry(plugin, monkeypatch):
+    env = plugin()
+    panel, loc_ui = location_panel(env, monkeypatch)
+
+    def fail(*args):
+        raise loc_ui.PrayerError("timeout")
+
+    monkeypatch.setattr(loc_ui, "search_locations", fail)
+    panel.search_query.SetValue("Ankara")
+    panel.on_search_location(None)
+    env.workers.pop().run()
+    finish(env)
+    assert panel.search_button.enabled and not panel.use_place.enabled
+    assert "zaman aşımına" in panel.lookup_status.value
+
+
+def test_prayer_output_identifies_actual_location_and_source(plugin):
+    env = plugin()
+    module = env.module
+    service = sys.modules[module.PrayerService.__module__]
+    from datetime import datetime, date
+
+    zone = service.load_timezone("Europe/Istanbul")
+    prayer = service.Prayer("Fajr", datetime(2026, 10, 18, 5, 30, tzinfo=zone))
+    schedule = service.Schedule(date(2026, 10, 18), "Europe/Istanbul", zone, 13, (prayer,))
+    data = service.PrayerData(schedule, location=service.Location(39.93, 32.86, "Ankara, TR"))
+    now = datetime(2026, 10, 18, 4, tzinfo=zone)
+    text = module.handler.current_text(data, service.Options(), now)
+    assert "Ankara, TR" in text and "39.9300, 32.8600" in text and "yaklaşık" in text
+    text = module.handler.next_text(data, service.Options(auto_detect=False), now)
+    assert "Ankara, TR" in text and "Seçilen konum" in text

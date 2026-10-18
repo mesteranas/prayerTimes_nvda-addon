@@ -54,6 +54,7 @@ class Options:
     school: int = 0
     latitude_adjustment: int = 3
     use_24h: bool = True
+    location_name: str = ""
 
     def __post_init__(self):
         if (
@@ -74,6 +75,28 @@ class Prayer:
 
 
 @dataclass(frozen=True)
+class Location:
+    latitude: float
+    longitude: float
+    name: str = ""
+
+    @property
+    def coordinates(self):
+        return self.latitude, self.longitude
+
+
+def place_name(*parts):
+    # Keep provider text on one line, and avoid duplicate city/region names.
+    names = []
+    for part in parts:
+        if isinstance(part, str):
+            text = " ".join(part.split())[:160]
+            if text and text.casefold() not in [name.casefold() for name in names]:
+                names.append(text)
+    return ", ".join(names)
+
+
+@dataclass(frozen=True)
 class Schedule:
     day: date
     timezone_name: str
@@ -87,6 +110,7 @@ class PrayerData:
     today: Schedule
     tomorrow: object = None
     previous: object = None
+    location: object = None
 
     def current(self, now):
         target_day = now.astimezone(self.today.zone).date()
@@ -136,13 +160,63 @@ def _get_json(url, params=None):
 
 
 def detect_location():
-    data = _get_json("https://ipwho.is/", {"fields": "success,latitude,longitude"})
+    data = _get_json(
+        "https://ipwho.is/", {"fields": "success,latitude,longitude,city,region,country,country_code"}
+    )
     if data.get("success") is not True:
         raise PrayerError("location")
     try:
-        return coordinate(data["latitude"]), coordinate(data["longitude"], latitude=False)
+        return Location(
+            coordinate(data["latitude"]),
+            coordinate(data["longitude"], latitude=False),
+            place_name(data.get("city"), data.get("region"), data.get("country"), data.get("country_code")),
+        )
     except (KeyError, PrayerError):
         raise PrayerError("location") from None
+
+
+def search_locations(query, language="en"):
+    query = " ".join(query.split())
+    if not 2 <= len(query) <= 200:
+        raise PrayerError("search_query")
+    params = {"name": query, "count": 10, "language": language.split("_")[0].split("-")[0].lower()}
+    name, separator, qualifier = query.rpartition(",")
+    qualifier = qualifier.strip()
+    # An explicit country filter works consistently, including TR and ID.
+    # Never retry a failed country search against a different/global location.
+    if separator and len(qualifier) == 2 and qualifier.isascii() and qualifier.isalpha():
+        if len(name.strip()) < 2:
+            raise PrayerError("search_query")
+        params["name"] = name.strip()
+        params["countryCode"] = qualifier.upper()
+    raw = _get_json("https://geocoding-api.open-meteo.com/v1/search", params)
+    if raw.get("error") or not isinstance(raw.get("results", []), list):
+        raise PrayerError("search_response")
+    places = []
+    for entry in raw.get("results", [])[:10]:
+        try:
+            if "countryCode" in params and entry.get("country_code") != params["countryCode"]:
+                continue
+            if not isinstance(entry.get("name"), str) or not entry["name"].strip():
+                raise ValueError
+            location = Location(
+                coordinate(entry["latitude"]),
+                coordinate(entry["longitude"], latitude=False),
+                place_name(
+                    entry["name"],
+                    entry.get("admin2"),
+                    entry.get("admin1"),
+                    entry.get("country"),
+                    entry.get("country_code"),
+                ),
+            )
+        except (AttributeError, KeyError, ValueError, PrayerError):
+            continue
+        if location not in places:
+            places.append(location)
+    if raw.get("results") and not places:
+        raise PrayerError("search_response")
+    return tuple(places)
 
 
 def fetch_schedule(latitude, longitude, day, options):
@@ -230,20 +304,38 @@ class PrayerService:
         if self._closed or revision != self._revision:
             raise StaleRequest
 
-    def _coordinates(self, options, revision):
+    def _resolve_location(self, options, revision):
         if not options.auto_detect:
-            return coordinate(options.latitude), coordinate(options.longitude, latitude=False)
+            return Location(
+                coordinate(options.latitude),
+                coordinate(options.longitude, latitude=False),
+                options.location_name,
+            )
         now = self._clock()
         with self._lock:
             self._check(revision)
             if self._location and timedelta(0) <= now - self._location[0] < timedelta(hours=1):
                 return self._location[1]
-        coords = self._locator()
-        coords = (coordinate(coords[0]), coordinate(coords[1], latitude=False))
+        location = self._locator()
+        location = Location(
+            coordinate(location.latitude), coordinate(location.longitude, latitude=False), location.name
+        )
         with self._lock:
             self._check(revision)
-            self._location = (now, coords)
-        return coords
+            self._location = (now, location)
+        return location
+
+    def get_location(self, options=None):
+        with self._lock:
+            revision = self._revision
+            self._check(revision)
+        return self._resolve_location(options or Options(), revision)
+
+    def cached_location(self):
+        with self._lock:
+            if self._location and timedelta(0) <= self._clock() - self._location[0] < timedelta(hours=1):
+                return self._location[1]
+        return None
 
     def _schedule(self, coords, day, options, revision):
         key = (coords, day, options.method, options.school, options.latitude_adjustment)
@@ -267,7 +359,8 @@ class PrayerService:
         with self._lock:
             revision = self._revision
             self._check(revision)
-        coords = self._coordinates(options, revision)
+        location = self._resolve_location(options, revision)
+        coords = location.coordinates
         with self._lock:
             zone = self._zones.get(coords, UTC)
         for _attempt in range(3):
@@ -286,5 +379,5 @@ class PrayerService:
             if self._clock().astimezone(zone).date() == day:
                 with self._lock:
                     self._check(revision)
-                return PrayerData(today, tomorrow, previous)
+                return PrayerData(today, tomorrow, previous, location)
         raise PrayerError("date_changed")

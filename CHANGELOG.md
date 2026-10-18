@@ -1,3 +1,12 @@
+# 2.1.0-dev3 — visible location and place selection
+
+- Show approximate automatic city/region/country and coordinates in settings;
+  identify the location used in prayer results and next-prayer announcements.
+- Add explicit global city/district/postal-code search via Open-Meteo/GeoNames,
+  disambiguated matches and a separate Use selected location action.
+- Save manual selection only with Apply/OK; clear a place name after coordinate
+  edits and ignore stale or closed-panel lookup results. Lookups run off the GUI thread.
+
 # 2.1.0-dev2 — configuration initialization fix
 
 - Inspect raw profiles before registering defaults, avoiding NVDA's cached

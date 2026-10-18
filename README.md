@@ -3,7 +3,7 @@
 An NVDA add-on for Islamic prayer times, with manual or IP-based location,
 selectable calculation methods and 12/24-hour display.
 
-This checkout contains **2.1.0-dev2**, a local development version. It is not a
+This checkout contains **2.1.0-dev3**, a local development version. It is not a
 published release and has not completed live NVDA acceptance testing.
 
 ## Use
@@ -19,6 +19,32 @@ In NVDA Settings, open **prayer times**. Automatic location uses the public IP
 address, not GPS. VPNs and mobile networks can locate you incorrectly. Disable
 it and enter latitude/longitude for a precise location. Decimal dots and commas
 are accepted; blank, non-finite and out-of-range coordinates are rejected.
+
+The settings panel displays the detected city/region/country and coordinates,
+marked as an **approximate IP location**. You can refresh this preview. Prayer
+results identify the location actually used; the next-prayer announcement also
+includes its name. If a provider supplies no name, coordinates remain visible.
+
+If detection is wrong, enter a city, district or postal code and activate
+**Search for a location**. For example, `Ankara, TR`, `Çankaya, TR` or `Paris,
+France`. A two-letter suffix after the last comma is treated as an explicit
+country code; use full names for regions. Up to ten matches show their country,
+region and coordinates. Choose one, then activate **Use selected location**.
+This fills the coordinates and switches automatic detection off. Activate
+**Apply** or **OK** to save. The first match is never applied automatically.
+Changing coordinates manually removes the selected place name if they differ.
+Cancel leaves the saved location unchanged. Settings previews and unconfirmed
+search results do not change the active prayer location.
+
+Search is sent only when its button is activated, not on each keystroke. It uses
+[Open-Meteo geocoding](https://open-meteo.com/en/docs/geocoding-api), with location
+data by [GeoNames](https://www.geonames.org/) under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The query and client IP
+are visible to that service. Its free endpoint is for non-commercial use and
+has service limits; see its [terms](https://open-meteo.com/en/terms). If a place
+is absent or lookup is unavailable, manual coordinates remain available.
+Place coordinates represent the indexed location, not a GPS fix or an official
+prayer authority's timetable location. Check the calculation method separately.
 
 ## Calculation choices
 

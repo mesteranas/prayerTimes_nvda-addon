@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Namaz Vakitleri</h1>
-<p>NVDA ile bulunduğunuz veya seçtiğiniz konumun namaz vakitlerini öğrenin. Bu belge 2.1.0-dev2 geliştirme sürümünü açıklar.</p>
+<p>NVDA ile bulunduğunuz veya seçtiğiniz konumun namaz vakitlerini öğrenin. Bu belge 2.1.0-dev3 geliştirme sürümünü açıklar.</p>
 <h2>Kısayollar ve sonuç penceresi</h2>
 <ul>
 <li><strong>NVDA+Alt+P:</strong> Günün vakitlerini salt okunur, çok satırlı metin alanında açar. Tarih, konumun saat dilimi ve kullanılan yöntem de gösterilir.</li>
@@ -20,6 +20,9 @@
 <p>NVDA Ayarları içindeki <strong>Namaz Vakitleri</strong> kategorisini açın. Otomatik konum, GPS yerine genel IP adresinizi kullanır. VPN ve mobil ağlarda başka bir şehir algılanabilir.</p>
 <p>Elle konum girmek için otomatik algılamayı kapatın. Enlem ve boylam alanları etkinleşir. Ondalık ayıracı olarak nokta veya virgül kullanılabilir; örneğin <code>41,0082</code> ve <code>28,9784</code>. Enlem -90 ile 90, boylam -180 ile 180 arasında olmalıdır. Boş veya geçersiz değerler kaydedilmez. Güney ve batı koordinatları negatiftir.</p>
 <h2>Hesaplama yöntemi ve saat biçimi</h2>
+<p>Ayar panelindeki Geçerli konum alanı, otomatik bulunan şehir, bölge, ülke ve koordinatları yaklaşık IP konumu olarak gösterir. Otomatik konumu yenile düğmesiyle yeniden sorgulayabilirsiniz. Vakit sonuçlarında hesapta kullanılan konum da belirtilir.</p>
+<p>Yanlış konumu düzeltmek için Şehir, ilçe veya posta kodu alanına örneğin <code>Ankara, TR</code>, <code>Çankaya, TR</code> veya <code>Paris, France</code> yazıp Konum ara düğmesine basın. Son virgülden sonraki iki harf ülke kodu olarak kullanılır; bölge adlarını tam yazın. Eşleşen konumlar listesinden ülke, bölge ve koordinat bilgisine göre doğru yeri seçip Seçilen konumu kullan düğmesine basın. Koordinatlar doldurulur ve otomatik algılama kapatılır. Uygula veya Tamam ile kaydedin; İptal mevcut ayarları korur. İlk eşleşme kendiliğinden uygulanmaz. Koordinatlar değiştirildiğinde eski yer adı temizlenir.</p>
+<p>Arama yalnızca düğmeye basıldığında <a href="https://open-meteo.com/en/docs/geocoding-api">Open-Meteo</a> hizmetine gönderilir; veri kaynağı <a href="https://www.geonames.org/">GeoNames</a>, veri lisansı <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>'dır. Hizmet arama metnini ve genel IP adresinizi görür. Ücretsiz uç nokta ticari olmayan kullanım içindir ve kullanım sınırları vardır. Sonuç bulunamazsa elle koordinat girebilirsiniz. Yerleşim koordinatı GPS ölçümü veya resmî namaz takvimiyle eşleşme garantisi değildir.</p>
 <p>Hesaplama yöntemi listesinden Diyanet, Dünya İslam Birliği, ISNA, Mısır, Ümmü'l-Kura, Karaçi ve diğer desteklenen kurumları seçebilirsiniz. İkindi hesabı için standart veya Hanefi seçeneği bulunur. Yüksek enlemler için gecenin yarısı, gecenin yedide biri ve açıya göre düzeltme seçenekleri vardır.</p>
 <p>Yerel dinî kurumunuzun önerdiği yöntemi seçin. Yeni kurulumdaki <strong>Otomatik</strong> seçeneği Aladhan'ın coğrafi olarak yakın bulduğu yöntemi kullanır; bu, ülkenizin resmî tercihiyle aynı olmak zorunda değildir. Sonuçta kullanılan gerçek yöntem gösterilir. V2.0'dan yükseltmede mevcut Mısır yöntemi korunur.</p>
 <h3>Diyanet seçeneği</h3>
