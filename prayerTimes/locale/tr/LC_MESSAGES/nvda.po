@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: prayerTimes 2.1.0-dev3\n"
+"Project-Id-Version: prayerTimes 3.0\n"
 "POT-Creation-Date: 2024-03-02 13:48+0200\n"
 "PO-Revision-Date: 2026-10-18 00:00+0300\n"
 "Last-Translator: Umut KORKMAZ <umutkork@gmail.com>\n"

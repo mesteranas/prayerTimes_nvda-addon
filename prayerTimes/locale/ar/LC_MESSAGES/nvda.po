@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: prayerTimes 2.1.0-dev3\n"
-"POT-Creation-Date: 2026-06-04 13:42+0300\n"
-"PO-Revision-Date: 2026-06-04 13:46+0300\n"
+"Project-Id-Version: prayerTimes 3.0\n"
+"POT-Creation-Date: 2026-10-20 16:31+0000\n"
+"PO-Revision-Date: 2026-10-20 19:43+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ar\n"
@@ -16,34 +16,118 @@ msgstr ""
 "Generated-By: pygettext.py 1.5\n"
 "X-Generator: Poedit 3.9\n"
 
-#: globalPlugins/prayerTimes/handler.py:42
-msgid "Sunrise"
-msgstr "شروق الشمس"
+#: globalPlugins/prayerTimes/handler.py:31
+msgid "Algeria"
+msgstr "الجزائر"
 
-#: globalPlugins/prayerTimes/__init__.py:116
-#: globalPlugins/prayerTimes/__init__.py:192
-msgid "prayer times"
-msgstr "مواقيت الصلاة"
+#: globalPlugins/prayerTimes/__init__.py:150
+msgid "Angle based"
+msgstr "بناءً على الزاوية"
+
+#: globalPlugins/prayerTimes/handler.py:44
+msgid "Asr"
+msgstr "العصر"
+
+#: globalPlugins/prayerTimes/__init__.py:142
+msgid "Asr calculation"
+msgstr "حساب العصر"
+
+#: globalPlugins/prayerTimes/handler.py:12
+msgid "Automatic (based on location)"
+msgstr "تلقائي (حسب الموقع)"
+
+#: globalPlugins/prayerTimes/handler.py:63
+msgid "Automatic location (approximate): {place}"
+msgstr "الموقع التلقائي (تقريبي): {place}"
+
+#: globalPlugins/prayerTimes/location_ui.py:89
+msgid "Automatic location is not available yet. Activate Refresh automatic location."
+msgstr "الموقع التلقائي غير متوفر بعد. قم بتنشيط تحديث الموقع التلقائي."
+
+#: globalPlugins/prayerTimes/__init__.py:129
+msgid "Calculation method"
+msgstr "طريقة الحساب"
+
+#: globalPlugins/prayerTimes/handler.py:83
+msgid "Calculation method: {method}"
+msgstr "طريقة الحساب: {method}"
+
+#: globalPlugins/prayerTimes/handler.py:114
+msgid "Check the prayer calculation settings."
+msgstr "تحقق من إعدادات حساب الصلاة."
+
+#: globalPlugins/prayerTimes/__init__.py:135
+msgid ""
+"Choose the method recommended by your local prayer authority. Automatic selection may differ."
+msgstr "اختر الطريقة التي توصي بها هيئة الصلاة المحلية لديك. قد يختلف الاختيار التلقائي."
+
+#: globalPlugins/prayerTimes/location_ui.py:38
+msgid "City, district or postal code"
+msgstr "المدينة، الحي أو الرمز البريدي"
+
+#: globalPlugins/prayerTimes/__init__.py:81
+msgid "Close"
+msgstr "إغلاق"
+
+#: globalPlugins/prayerTimes/handler.py:34
+msgid "Comunidade Islamica de Lisboa"
+msgstr "الجالية الإسلامية في لشبونة"
+
+#: globalPlugins/prayerTimes/location_ui.py:33
+msgid "Current location"
+msgstr "الموقع الحالي"
+
+#: globalPlugins/prayerTimes/handler.py:81
+msgid "Date: {date}"
+msgstr "التاريخ: {date}"
 
 #: globalPlugins/prayerTimes/location_ui.py:28
 msgid "Detect location automatically. Not accurate in all cases"
 msgstr "تحديد الموقع تلقائيا. ليست دقيقة في جميع الحالات"
 
-#: globalPlugins/prayerTimes/location_ui.py:60
-msgid "Latitude"
-msgstr "دائر العرض"
+#: globalPlugins/prayerTimes/location_ui.py:152
+msgid "Detecting approximate IP location..."
+msgstr "جاري تحديد الموقع التقريبي عبر عنوان بروتوكول الإنترنت (IP)..."
 
-#: globalPlugins/prayerTimes/location_ui.py:61
-msgid "Longitude"
-msgstr "خط الطول"
+#: globalPlugins/prayerTimes/handler.py:43
+msgid "Dhuhr"
+msgstr "الظهر"
 
-#: globalPlugins/prayerTimes/__init__.py:219
-msgid "loading"
-msgstr "جاري التحميل"
+#: globalPlugins/prayerTimes/handler.py:28
+msgid "Dubai (experimental)"
+msgstr "دبي (تجريبي)"
 
-#: globalPlugins/prayerTimes/__init__.py:70
-msgid "Result"
-msgstr "نتيجة"
+#: globalPlugins/prayerTimes/handler.py:15
+msgid "Egyptian General Authority of Survey"
+msgstr "الهيئة المصرية العامة للمساحة"
+
+#: globalPlugins/prayerTimes/handler.py:112
+msgid "Enter a latitude between -90 and 90."
+msgstr "أدخل خط عرض بين -90 و 90."
+
+#: globalPlugins/prayerTimes/handler.py:113
+msgid "Enter a longitude between -180 and 180."
+msgstr "أدخل خط طول بين -180 و 180."
+
+#: globalPlugins/prayerTimes/handler.py:70
+msgid "Enter a place name or postal code with 2 to 200 characters."
+msgstr "أدخل اسم مكان أو رمز بريدي يتراوح طوله بين 2 و 200 حرف."
+
+#: globalPlugins/prayerTimes/location_ui.py:95
+msgid "Enter valid coordinates or search for your location."
+msgstr "أدخل إحداثيات صالحة أو ابحث عن موقعك."
+
+#: globalPlugins/prayerTimes/handler.py:41
+msgid "Fajr"
+msgstr "الفجر"
+
+#: globalPlugins/prayerTimes/location_ui.py:41
+msgid "For example: Ankara, TR or Paris, France. Search: Open-Meteo / GeoNames."
+msgstr "على سبيل المثال: Ankara, TR or Paris, France. البحث: Open-Meteo / GeoNames."
+
+#: globalPlugins/prayerTimes/location_ui.py:215
+msgid "Found {count} locations. Choose a match and activate Use selected location."
+msgstr "تم العثور على {count} من المواقع. اختر مطابقة وقم بتنشيط استخدام الموقع المحدد."
 
 #: globalPlugins/prayerTimes/__init__.py:296
 msgid "Get current prayer times"
@@ -53,363 +137,245 @@ msgstr "الحصول على أوقات الصلاة الحالية"
 msgid "Get next prayer time"
 msgstr "الحصول على وقت الصلاة القادمة"
 
-#: globalPlugins/prayerTimes/handler.py:41
-msgid "Fajr"
-msgstr "الفجر"
+#: globalPlugins/prayerTimes/handler.py:21
+msgid "Gulf Region"
+msgstr "منطقة الخليج"
 
-#: globalPlugins/prayerTimes/handler.py:43
-msgid "Dhuhr"
-msgstr "الظهر"
+#: globalPlugins/prayerTimes/__init__.py:144
+msgid "Hanafi"
+msgstr "الحنفي"
 
-#: globalPlugins/prayerTimes/handler.py:44
-msgid "Asr"
-msgstr "العصر"
+#: globalPlugins/prayerTimes/__init__.py:148
+msgid "High latitude adjustment"
+msgstr "تعديل خطوط العرض العليا"
 
-#: globalPlugins/prayerTimes/handler.py:45
-msgid "Maghrib"
-msgstr "المغرب"
+#: globalPlugins/prayerTimes/location_ui.py:206
+msgid "If this location is wrong, search below and use the correct match."
+msgstr "إذا كان هذا الموقع غير صحيح، ابحث أدناه واستخدم المطابقة الصحيحة."
+
+#: globalPlugins/prayerTimes/handler.py:20
+msgid "Institute of Geophysics, University of Tehran"
+msgstr "معهد الجوفيزياء، جامعة طهران"
+
+#: globalPlugins/prayerTimes/__init__.py:168
+msgid "Invalid coordinates"
+msgstr "إحداثيات غير صالحة"
 
 #: globalPlugins/prayerTimes/handler.py:46
 msgid "Isha"
 msgstr "العشاء"
 
-#: globalPlugins/prayerTimes/handler.py:31
-msgid "Algeria"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:150
-msgid "Angle based"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:142
-msgid "Asr calculation"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:12
-msgid "Automatic (based on location)"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:129
-msgid "Calculation method"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:83
-msgid "Calculation method: {method}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:114
-msgid "Check the prayer calculation settings."
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:81
-msgid "Close"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:34
-msgid "Comunidade Islamica de Lisboa"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:81
-msgid "Date: {date}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:28
-msgid "Dubai (experimental)"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:15
-msgid "Egyptian General Authority of Survey"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:112
-msgid "Enter a latitude between -90 and 90."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:113
-msgid "Enter a longitude between -180 and 180."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:21
-msgid "Gulf Region"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:144
-msgid "Hanafi"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:148
-msgid "High latitude adjustment"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:20
-msgid "Institute of Geophysics, University of Tehran"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:168
-msgid "Invalid coordinates"
-msgstr ""
-
 #: globalPlugins/prayerTimes/handler.py:19
 msgid "Islamic Society of North America (ISNA)"
-msgstr ""
+msgstr "الجمعية الإسلامية لأمريكا الشمالية (ISNA)"
 
 #: globalPlugins/prayerTimes/handler.py:29
 msgid "Jabatan Kemajuan Islam Malaysia (JAKIM)"
-msgstr ""
+msgstr "إدارة التطور الإسلامي في ماليزيا (JAKIM)"
 
 #: globalPlugins/prayerTimes/handler.py:32
 msgid "Kementerian Agama Republik Indonesia"
-msgstr ""
+msgstr "وزارة الشؤون الدينية في جمهورية إندونيسيا"
 
 #: globalPlugins/prayerTimes/handler.py:22
 msgid "Kuwait"
-msgstr ""
+msgstr "الكويت"
 
-#: globalPlugins/prayerTimes/handler.py:24
-msgid "Majlis Ugama Islam Singapura, Singapore"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:150
-msgid "Middle of the night"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:35
-msgid "Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:27
-msgid "Moonsighting Committee Worldwide"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:33
-msgid "Morocco"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:14
-msgid "Muslim World League"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:150
-msgid "One seventh of the night"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:75
-msgid "Prayer times"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:116
-msgid ""
-"Prayer times could not be retrieved. Check your internet connection and try "
-"again."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:123
-msgid "Prayer times could not be retrieved. Try again."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:23
-msgid "Qatar"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:17
-msgid "Shia Ithna-Ashari, Leva Institute, Qum"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:26
-msgid "Spiritual Administration of Muslims of Russia"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:144
-msgid "Standard (Shafi'i, Maliki, Hanbali)"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:122
-msgid "The date changed while retrieving prayer times. Try again."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:121
-msgid ""
-"The location's time zone is not supported by this version of the add-on."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:117
-msgid ""
-"The prayer service returned invalid or unavailable times. Try another "
-"calculation method or location."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:115
-msgid "The request timed out. Try again."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:82
-msgid "Time zone: {zone}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:103
-msgid "Tomorrow, {prayer}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:91
-msgid "Tomorrow, {time}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:30
-msgid "Tunisia"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:13
-msgid "Turkish Presidency of Religious Affairs (Diyanet, experimental)"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:16
-msgid "Umm Al-Qura University, Makkah"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:25
-msgid "Union Organization Islamic de France"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:18
-msgid "University of Islamic Sciences, Karachi"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:153
-msgid "Use 24-hour time format"
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:120
-msgid ""
-"Your location could not be detected. Try again or enter coordinates in "
-"settings."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:104
-msgid "{prayer}. Time zone: {zone}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/__init__.py:135
-msgid ""
-"Choose the method recommended by your local prayer authority. Automatic "
-"selection may differ."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:63
-msgid "Automatic location (approximate): {place}"
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:89
-msgid ""
-"Automatic location is not available yet. Activate Refresh automatic "
-"location."
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:38
-msgid "City, district or postal code"
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:33
-msgid "Current location"
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:152
-msgid "Detecting approximate IP location..."
-msgstr ""
-
-#: globalPlugins/prayerTimes/handler.py:70
-msgid "Enter a place name or postal code with 2 to 200 characters."
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:95
-msgid "Enter valid coordinates or search for your location."
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:41
-msgid ""
-"For example: Ankara, TR or Paris, France. Search: Open-Meteo / GeoNames."
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:215
-msgid ""
-"Found {count} locations. Choose a match and activate Use selected location."
-msgstr ""
-
-#: globalPlugins/prayerTimes/location_ui.py:206
-msgid "If this location is wrong, search below and use the correct match."
-msgstr ""
+#: globalPlugins/prayerTimes/location_ui.py:60
+msgid "Latitude"
+msgstr "دائرة العرض"
 
 #: globalPlugins/prayerTimes/handler.py:72
-msgid ""
-"Location lookup failed. Check your internet connection or enter coordinates."
-msgstr ""
+msgid "Location lookup failed. Check your internet connection or enter coordinates."
+msgstr "فشل البحث عن الموقع. تحقق من اتصالك بالإنترنت أو أدخل الإحداثيات."
 
 #: globalPlugins/prayerTimes/handler.py:73
-msgid ""
-"Location lookup returned no usable data. Try again or enter coordinates."
-msgstr ""
+msgid "Location lookup returned no usable data. Try again or enter coordinates."
+msgstr "لم يُرجع البحث عن الموقع أي بيانات قابلة للاستخدام. حاول مرة أخرى أو أدخل الإحداثيات."
 
 #: globalPlugins/prayerTimes/location_ui.py:53
 msgid "Location lookup status"
-msgstr ""
+msgstr "حالة البحث عن الموقع"
+
+#: globalPlugins/prayerTimes/location_ui.py:61
+msgid "Longitude"
+msgstr "خط الطول"
+
+#: globalPlugins/prayerTimes/handler.py:45
+msgid "Maghrib"
+msgstr "المغرب"
+
+#: globalPlugins/prayerTimes/handler.py:24
+msgid "Majlis Ugama Islam Singapura, Singapore"
+msgstr "مجلس الشؤون الإسلامية بسنغافورة"
 
 #: globalPlugins/prayerTimes/location_ui.py:48
 msgid "Matching locations"
-msgstr ""
+msgstr "المواقع المطابقة"
+
+#: globalPlugins/prayerTimes/__init__.py:150
+msgid "Middle of the night"
+msgstr "منتصف الليل"
+
+#: globalPlugins/prayerTimes/handler.py:35
+msgid "Ministry of Awqaf, Islamic Affairs and Holy Places, Jordan"
+msgstr "وزارة الأوقاف والشؤون والمقدسات الإسلامية، الأردن"
+
+#: globalPlugins/prayerTimes/handler.py:27
+msgid "Moonsighting Committee Worldwide"
+msgstr "لجنة رؤية الأهلة العالمية"
+
+#: globalPlugins/prayerTimes/handler.py:33
+msgid "Morocco"
+msgstr "المغرب"
+
+#: globalPlugins/prayerTimes/handler.py:14
+msgid "Muslim World League"
+msgstr "رابطة العالم الإسلامي"
 
 #: globalPlugins/prayerTimes/location_ui.py:219
-msgid ""
-"No matching locations. Try another spelling, add a country, or enter "
-"coordinates."
-msgstr ""
+msgid "No matching locations. Try another spelling, add a country, or enter coordinates."
+msgstr "لا توجد مواقع مطابقة. جرب تهجئة أخرى، أو أضف دولة، أو أدخل الإحداثيات."
+
+#: globalPlugins/prayerTimes/__init__.py:150
+msgid "One seventh of the night"
+msgstr "سبع الليل"
+
+#: globalPlugins/prayerTimes/__init__.py:75
+msgid "Prayer times"
+msgstr "مواقيت الصلاة"
+
+#: globalPlugins/prayerTimes/handler.py:116
+msgid "Prayer times could not be retrieved. Check your internet connection and try again."
+msgstr "تعذر جلب مواقيت الصلاة. تحقق من اتصالك بالإنترنت وحاول مرة أخرى."
+
+#: globalPlugins/prayerTimes/handler.py:123
+msgid "Prayer times could not be retrieved. Try again."
+msgstr "تعذر جلب مواقيت الصلاة. حاول مرة أخرى."
+
+#: globalPlugins/prayerTimes/handler.py:23
+msgid "Qatar"
+msgstr "قطر"
 
 #: globalPlugins/prayerTimes/location_ui.py:35
 msgid "Refresh automatic location"
-msgstr ""
+msgstr "تحديث الموقع التلقائي"
+
+#: globalPlugins/prayerTimes/__init__.py:70
+msgid "Result"
+msgstr "نتيجة"
 
 #: globalPlugins/prayerTimes/location_ui.py:45
 msgid "Search for a location"
-msgstr ""
+msgstr "البحث عن موقع"
 
-#: globalPlugins/prayerTimes/location_ui.py:55
-#: globalPlugins/prayerTimes/location_ui.py:125
+#: globalPlugins/prayerTimes/location_ui.py:55 globalPlugins/prayerTimes/location_ui.py:125
 #: globalPlugins/prayerTimes/location_ui.py:194
-msgid ""
-"Search is only sent when you activate Search. No location is selected "
-"automatically."
-msgstr ""
+msgid "Search is only sent when you activate Search. No location is selected automatically."
+msgstr "لا يتم إرسال البحث إلا عند تنشيط زر البحث. لا يتم تحديد أي موقع تلقائياً."
 
 #: globalPlugins/prayerTimes/location_ui.py:152
 msgid "Searching locations..."
-msgstr ""
+msgstr "جاري البحث عن المواقع..."
 
 #: globalPlugins/prayerTimes/handler.py:63
 msgid "Selected location: {place}"
-msgstr ""
+msgstr "الموقع المحدد: {place}"
 
 #: globalPlugins/prayerTimes/location_ui.py:237
-msgid ""
-"Selected {place}. Automatic location is off. Activate Apply or OK to save."
-msgstr ""
+msgid "Selected {place}. Automatic location is off. Activate Apply or OK to save."
+msgstr "تم اختيار {place}. الموقع التلقائي متوقف. قم بتنشيط «تطبيق» أو «موافق» للحفظ."
+
+#: globalPlugins/prayerTimes/handler.py:17
+msgid "Shia Ithna-Ashari, Leva Institute, Qum"
+msgstr "الشيعة الإثنا عشرية، مؤسسة ليفا، قم"
+
+#: globalPlugins/prayerTimes/handler.py:26
+msgid "Spiritual Administration of Muslims of Russia"
+msgstr "الإدارة الدينية لمسلمي روسيا"
+
+#: globalPlugins/prayerTimes/__init__.py:144
+msgid "Standard (Shafi'i, Maliki, Hanbali)"
+msgstr "القياسي (الشافعي، المالكي، الحنبلي)"
+
+#: globalPlugins/prayerTimes/handler.py:42
+msgid "Sunrise"
+msgstr "شروق الشمس"
+
+#: globalPlugins/prayerTimes/handler.py:122
+msgid "The date changed while retrieving prayer times. Try again."
+msgstr "تغير التاريخ أثناء جلب مواقيت الصلاة. حاول مرة أخرى."
 
 #: globalPlugins/prayerTimes/handler.py:71
 msgid "The location lookup timed out. Try again or enter coordinates."
-msgstr ""
+msgstr "انتهت مهلة البحث عن الموقع. حاول مرة أخرى أو أدخل الإحداثيات."
+
+#: globalPlugins/prayerTimes/handler.py:121
+msgid "The location's time zone is not supported by this version of the add-on."
+msgstr "المنطقة الزمنية لهذا الموقع غير مدعومة من قِبل هذا الإصدار من الإضافة."
+
+#: globalPlugins/prayerTimes/handler.py:117
+msgid ""
+"The prayer service returned invalid or unavailable times. Try another calculation method or "
+"location."
+msgstr "أرجعت خدمة مواقيت الصلاة أوقاتاً غير صالحة أو غير متوفرة. جرب طريقة حساب أو موقعاً آخر."
+
+#: globalPlugins/prayerTimes/handler.py:115
+msgid "The request timed out. Try again."
+msgstr "انتهت مهلة الطلب. حاول مرة أخرى."
+
+#: globalPlugins/prayerTimes/handler.py:82
+msgid "Time zone: {zone}"
+msgstr "المنطقة الزمنية: {zone}"
+
+#: globalPlugins/prayerTimes/handler.py:103
+msgid "Tomorrow, {prayer}"
+msgstr "غداً، {prayer}"
+
+#: globalPlugins/prayerTimes/handler.py:91
+msgid "Tomorrow, {time}"
+msgstr "غداً، {time}"
+
+#: globalPlugins/prayerTimes/handler.py:30
+msgid "Tunisia"
+msgstr "تونس"
+
+#: globalPlugins/prayerTimes/handler.py:13
+msgid "Turkish Presidency of Religious Affairs (Diyanet, experimental)"
+msgstr "الرئاسة التركية للشؤون الدينية (ديانت، تجريبي)"
+
+#: globalPlugins/prayerTimes/handler.py:16
+msgid "Umm Al-Qura University, Makkah"
+msgstr "جامعة أم القرى، مكة المكرمة"
+
+#: globalPlugins/prayerTimes/handler.py:25
+msgid "Union Organization Islamic de France"
+msgstr "اتحاد المنظمات الإسلامية في فرنسا"
+
+#: globalPlugins/prayerTimes/handler.py:18
+msgid "University of Islamic Sciences, Karachi"
+msgstr "جامعة العلوم الإسلامية، كراتشي"
+
+#: globalPlugins/prayerTimes/__init__.py:153
+msgid "Use 24-hour time format"
+msgstr "استخدام نظام 24 ساعة"
 
 #: globalPlugins/prayerTimes/location_ui.py:50
 msgid "Use selected location"
-msgstr ""
+msgstr "استخدام الموقع المحدد"
 
-#~ msgid "error"
-#~ msgstr "خطأ"
+#: globalPlugins/prayerTimes/handler.py:120
+msgid "Your location could not be detected. Try again or enter coordinates in settings."
+msgstr "تعذر تحديد موقعك. حاول مرة أخرى أو أدخل الإحداثيات في الإعدادات."
 
-#~ msgid " at"
-#~ msgstr "في"
+#: globalPlugins/prayerTimes/__init__.py:219
+msgid "loading"
+msgstr "جاري التحميل"
 
-#~ msgid "select country"
-#~ msgstr "إختر دولة"
+#: globalPlugins/prayerTimes/__init__.py:116 globalPlugins/prayerTimes/__init__.py:192
+msgid "prayer times"
+msgstr "مواقيت الصلاة"
 
-#~ msgid "type your city"
-#~ msgstr "أكتب مدينتك"
-
-#~ msgid "say prayer times"
-#~ msgstr "نطق مواقيت الصلة"
+#: globalPlugins/prayerTimes/handler.py:104
+msgid "{prayer}. Time zone: {zone}"
+msgstr "{prayer}. المنطقة الزمنية: {zone}"
